@@ -5,6 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Project SpiderWeb Change Password</title>
+    <link rel="stylesheet" type="text/css" href="Style.css"/>
 </head>
 <body>
     <h2>Project SpiderWeb Change Password</h2>
