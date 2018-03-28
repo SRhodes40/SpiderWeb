@@ -25,7 +25,7 @@ public static class CourseSearch
         cmd = new SqlCommand();
         cmd.Connection = conn;
         cmd.CommandType = CommandType.Text;
-        cmd.CommandText = "SELECT * FROM Student ORDER BY CouseNumber";
+        cmd.CommandText = "SELECT CourseNumber FROM Student ORDER BY CouseNumber";
         dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
         return dr;
     } // end of getStudent
