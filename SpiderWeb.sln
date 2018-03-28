@@ -1,13 +1,40 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2005
+VisualStudioVersion = 15.0.26730.8
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "SpiderWeb(1)", ".", "{66838E7D-5072-47DD-81BC-77908540906A}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_61530"
+		Debug.AspNetCompiler.PhysicalPath = "H:\CSC492\SpiderWeb\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_61530\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_61530"
+		Release.AspNetCompiler.PhysicalPath = "H:\CSC492\SpiderWeb\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_61530\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "61530"
+	EndProjectSection
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{66838E7D-5072-47DD-81BC-77908540906A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66838E7D-5072-47DD-81BC-77908540906A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {0248F531-FCCB-44BD-BA37-AB90645E3AC2}
+		SolutionGuid = {1F90AC0F-454C-4792-B012-589C80411AD8}
 	EndGlobalSection
 EndGlobal
