@@ -21,4 +21,5 @@
         </p>
     </form>
 </body>
+    <a href="Search.aspx">Other Navigation Pages, Admin View Only</a>
 </html>
