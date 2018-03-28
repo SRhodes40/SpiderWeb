@@ -20,6 +20,8 @@
             &nbsp;&nbsp;
             <asp:TextBox ID="Passwordtxt" runat="server"></asp:TextBox>
         </p>
+        <asp:Button ID="Loginbtn" runat="server" OnClick="Button1_Click" Text="Login" />
+        <asp:Label ID="Loginlbl" runat="server" Text=""></asp:Label>
     </form>
 </body>
     <a href="Search.aspx">Other Navigation Pages, Admin View Only</a>
