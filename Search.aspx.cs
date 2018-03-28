@@ -4,12 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Configuration;  // for ConfigurationManager
-using System.Data.SqlClient; // for SqlConnection, SqlCommand, and SqlDataReader
-using System.Data;           // for CommandType
+using System.Data;            // DataSet
+using System.Data.SqlClient;  // SqlConnection, SqlCommand, SqlDataReader
+using System.Configuration;   // to get the connection from Web.config
+using System.ComponentModel;  // DataObject, DataObjectMethod
 
 public partial class Search : System.Web.UI.Page
 {
+    [DataObjectMethod(DataObjectMethodType.Select)]
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -20,6 +22,7 @@ public partial class Search : System.Web.UI.Page
     string connectionString;
     ListItem listItem;
     int numRowsAffected;
+
     protected void searchcourseBtn_Click(object sender, EventArgs e)
     {
         conn = new SqlConnection(getConnectionString());
@@ -27,7 +30,7 @@ public partial class Search : System.Web.UI.Page
         cmd = new SqlCommand();
         cmd.Connection = conn;
         cmd.CommandType = CommandType.Text;
-        cmd.CommandText = "SELECT" + studentTxt.Text + "FROM Student ORDER BY studentNumber";
+        cmd.CommandText = ("SELECT" + courseTxt.Text + "FROM Student ORDER BY studentNumber");
        
         conn.Close();
     }
