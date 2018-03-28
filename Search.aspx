@@ -9,12 +9,19 @@
 </head>
 <body>
     <h2>Project SpiderWeb Search Page</h2>
+    
     <form id="form1" runat="server">
         <div>
             <asp:Menu ID="Menu1" runat="server" DataSourceID="SiteMapDataSDS4" Orientation="Horizontal" RenderingMode="Table" StaticDisplayLevels="2">
             </asp:Menu>
             <asp:SiteMapDataSource ID="SiteMapDataSDS4" runat="server" />
+            &nbsp
+        &nbsp
+        &nbsp
+        &nbsp
+        &nbsp
         </div>
+     
         <asp:Label ID="studentsearchLbl" runat="server" Text="Enter Student Name:"></asp:Label>
         &nbsp
         <asp:TextBox ID="studentTxt" runat="server"></asp:TextBox>
