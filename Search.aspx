@@ -36,7 +36,8 @@
         <p>
             <asp:Button ID="coursesearchBtn" runat="server" Text="Search" OnClick="searchcourseBtn_Click" />
         </p>
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="StudentNumber,MajorCode,MinorCode,CourseNumber,LetterGrade" DataSourceID="spiderwebDdb">
+        <asp:SqlDataSource ID="spiderwebDdb" runat="server" ConnectionString="<%$ ConnectionStrings:SpiderWebConnectionString %>" SelectCommand="SELECT DISTINCT FirstName, LastName,  MiddleInitial, Age, GPA, Student.StudentNumber ,ClassYear, Major.MajorCode, Minor.MinorCode FROM (((([Student] JOIN [StudentHasMajor] ON [Student].StudentNumber = [StudentHasMajor].StudentNumber) JOIN [Major] ON [StudentHasMajor].MajorCode = [Major].MajorCode)  JOIN [StudentHasMinor] ON [StudentHasMinor].StudentNumber=[Student].StudentNumber)  JOIN [Minor] ON [StudentHasMinor].MinorCode = [Minor].MinorCode)"></asp:SqlDataSource>
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="StudentNumber,MajorCode,MinorCode" DataSourceID="spiderwebDdb">
             <Columns>
                 <asp:BoundField DataField="FirstName" HeaderText="FirstName" SortExpression="FirstName" />
                 <asp:BoundField DataField="LastName" HeaderText="LastName" SortExpression="LastName" />
@@ -46,20 +47,9 @@
                 <asp:BoundField DataField="StudentNumber" HeaderText="StudentNumber" ReadOnly="True" SortExpression="StudentNumber" />
                 <asp:BoundField DataField="ClassYear" HeaderText="ClassYear" SortExpression="ClassYear" />
                 <asp:BoundField DataField="MajorCode" HeaderText="MajorCode" ReadOnly="True" SortExpression="MajorCode" />
-                <asp:BoundField DataField="MajorDescription" HeaderText="MajorDescription" SortExpression="MajorDescription" />
-                <asp:BoundField DataField="MinorCode" HeaderText="MinorCode" ReadOnly="True" SortExpression="MinorCode" />
-                <asp:BoundField DataField="MinorDescription" HeaderText="MinorDescription" SortExpression="MinorDescription" />
-                <asp:BoundField DataField="NumberOfCredits" HeaderText="NumberOfCredits" SortExpression="NumberOfCredits" />
-                <asp:BoundField DataField="CourseDescription" HeaderText="CourseDescription" SortExpression="CourseDescription" />
-                <asp:BoundField DataField="CourseNumber" HeaderText="CourseNumber" ReadOnly="True" SortExpression="CourseNumber" />
-                <asp:BoundField DataField="LetterGrade" HeaderText="LetterGrade" ReadOnly="True" SortExpression="LetterGrade" />
-                <asp:BoundField DataField="QualityPointsEarned" HeaderText="QualityPointsEarned" SortExpression="QualityPointsEarned" />
-                <asp:BoundField DataField="QualityPointsPossible" HeaderText="QualityPointsPossible" SortExpression="QualityPointsPossible" />
+                <asp:BoundField DataField="MinorCode" HeaderText="MinorCode" SortExpression="MinorCode" ReadOnly="True" />
             </Columns>
         </asp:GridView>
-        <asp:SqlDataSource ID="spiderwebDdb" runat="server" ConnectionString="<%$ ConnectionStrings:SpiderWebConnectionString %>" SelectCommand="SELECT DISTINCT * FROM [Student], [Major] ,[Minor] , [Course] , [GPAReference] 
-
-"></asp:SqlDataSource>
     </form>
 </body>
 </html>

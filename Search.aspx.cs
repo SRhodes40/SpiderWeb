@@ -25,12 +25,16 @@ public partial class Search : System.Web.UI.Page
 
     protected void searchcourseBtn_Click(object sender, EventArgs e)
     {
+
+        // Show message box
+        //Console.WriteLine("courseTxt.Text = " + courseTxt.Text);
+        
         conn = new SqlConnection(getConnectionString());
         conn.Open();
         cmd = new SqlCommand();
         cmd.Connection = conn;
         cmd.CommandType = CommandType.Text;
-        cmd.CommandText = ("SELECT" + courseTxt.Text + "FROM Student ORDER BY studentNumber");
+        cmd.CommandText = ("SELECT * FROM Student WHERE LastName = '" + courseTxt.Text + "' ORDER BY StudentNumber");
        
         conn.Close();
     }
