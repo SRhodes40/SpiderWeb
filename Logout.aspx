@@ -5,6 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Logout</title>
+    <link rel="stylesheet" type="text/css" href="Style.css"/>
 </head>
 <body>
     <h2>You have been succesfully logged out. To log in, please click below.</h2>
