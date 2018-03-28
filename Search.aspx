@@ -10,6 +10,9 @@
     <h2>Project SpiderWeb Search Page</h2>
     <form id="form1" runat="server">
         <div>
+            <asp:Menu ID="Menu2" runat="server" DataSourceID="SiteMapDataSDS3" Orientation="Horizontal" RenderingMode="Table" StaticDisplayLevels="2">
+            </asp:Menu>
+            <asp:SiteMapDataSource ID="SiteMapDataSDS3" runat="server" />
         </div>
     </form>
 </body>
