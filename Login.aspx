@@ -18,8 +18,10 @@
         <p>
             <asp:Label ID="Passwordlbl" runat="server" Text="Password:"></asp:Label>
             &nbsp;&nbsp;
-            <asp:TextBox ID="Passwordtxt" runat="server"></asp:TextBox>
+            <asp:TextBox ID="Passwordtxt" runat="server" TextMode="Password"></asp:TextBox>
         </p>
+        <asp:Button ID="Loginbtn" runat="server" OnClick="Button1_Click" Text="Login" />
+        <asp:Label ID="Loginlbl" runat="server" Text=""></asp:Label>
     </form>
 </body>
     <a href="Search.aspx">Other Navigation Pages, Admin View Only</a>
