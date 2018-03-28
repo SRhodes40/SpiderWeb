@@ -25,7 +25,7 @@ public class StudentSearch
         cmd = new SqlCommand();
         cmd.Connection = conn;
         cmd.CommandType = CommandType.Text;
-        cmd.CommandText = "SELECT * FROM Student ORDER BY StudentNumber";
+        cmd.CommandText = "SELECT LastName FROM Student ORDER BY StudentNumber";
         dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
         return dr;
     } // end of getStudent
