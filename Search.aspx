@@ -23,7 +23,7 @@
         &nbsp
         <asp:TextBox ID="courseTxt" runat="server"></asp:TextBox>
         <p>
-            <asp:Button ID="searchBtn" runat="server" Text="Search" />
+            <asp:Button ID="coursesearchBtn" runat="server" Text="Search" OnClick="searchcourseBtn_Click" />
         </p>
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="StudentNumber,MajorCode,MinorCode,CourseNumber,LetterGrade" DataSourceID="spiderwebDdb">
             <Columns>
