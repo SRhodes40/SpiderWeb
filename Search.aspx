@@ -34,10 +34,54 @@
         &nbsp
         <asp:TextBox ID="courseTxt" runat="server"></asp:TextBox>
         <p>
-            <asp:Button ID="coursesearchBtn" runat="server" Text="Search" OnClick="searchcourseBtn_Click" />
+            <asp:Button ID="studentsearchBtn" runat="server" Text="Search" OnClick="studentsearchBtn_Click" />
+            <asp:DataList ID="studentDL" runat="server" DataKeyField="StudentNumber" DataSourceID="spiderwebDdb" Visible="False">
+                <ItemTemplate>
+                    FirstName:
+                    <asp:Label ID="FirstNameLabel" runat="server" Text='<%# Eval("FirstName") %>' />
+                    <br />
+                    LastName:
+                    <asp:Label ID="LastNameLabel" runat="server" Text='<%# Eval("LastName") %>' />
+                    <br />
+                    MiddleInitial:
+                    <asp:Label ID="MiddleInitialLabel" runat="server" Text='<%# Eval("MiddleInitial") %>' />
+                    <br />
+                    Age:
+                    <asp:Label ID="AgeLabel" runat="server" Text='<%# Eval("Age") %>' />
+                    <br />
+                    GPA:
+                    <asp:Label ID="GPALabel" runat="server" Text='<%# Eval("GPA") %>' />
+                    <br />
+                    StudentNumber:
+                    <asp:Label ID="StudentNumberLabel" runat="server" Text='<%# Eval("StudentNumber") %>' />
+                    <br />
+                    ClassYear:
+                    <asp:Label ID="ClassYearLabel" runat="server" Text='<%# Eval("ClassYear") %>' />
+                    <br />
+                    MajorCode:
+                    <asp:Label ID="MajorCodeLabel" runat="server" Text='<%# Eval("MajorCode") %>' />
+                    <br />
+                    MinorCode:
+                    <asp:Label ID="MinorCodeLabel" runat="server" Text='<%# Eval("MinorCode") %>' />
+                    <br />
+                    CourseNumber:
+                    <asp:Label ID="CourseNumberLabel" runat="server" Text='<%# Eval("CourseNumber") %>' />
+                    <br />
+                    NumberOfCredits:
+                    <asp:Label ID="NumberOfCreditsLabel" runat="server" Text='<%# Eval("NumberOfCredits") %>' />
+                    <br />
+                    Grade:
+                    <asp:Label ID="GradeLabel" runat="server" Text='<%# Eval("Grade") %>' />
+                    <br />
+                    InProgress:
+                    <asp:Label ID="InProgressLabel" runat="server" Text='<%# Eval("InProgress") %>' />
+                    <br />
+<br />
+                </ItemTemplate>
+            </asp:DataList>
         </p>
-        <asp:SqlDataSource ID="spiderwebDdb" runat="server" ConnectionString="<%$ ConnectionStrings:SpiderWebConnectionString %>" SelectCommand="SELECT DISTINCT FirstName, LastName,  MiddleInitial, Age, GPA, Student.StudentNumber ,ClassYear, Major.MajorCode, Minor.MinorCode FROM (((([Student] JOIN [StudentHasMajor] ON [Student].StudentNumber = [StudentHasMajor].StudentNumber) JOIN [Major] ON [StudentHasMajor].MajorCode = [Major].MajorCode)  JOIN [StudentHasMinor] ON [StudentHasMinor].StudentNumber=[Student].StudentNumber)  JOIN [Minor] ON [StudentHasMinor].MinorCode = [Minor].MinorCode)"></asp:SqlDataSource>
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="StudentNumber,MajorCode,MinorCode" DataSourceID="spiderwebDdb">
+        <asp:SqlDataSource ID="spiderwebDdb" runat="server" ConnectionString="<%$ ConnectionStrings:SpiderWebConnectionString %>" SelectCommand="SELECT DISTINCT Student.FirstName, Student.LastName, Student.MiddleInitial, Student.Age, Student.GPA, Student.StudentNumber, Student.ClassYear, Major.MajorCode, Minor.MinorCode, Course.CourseNumber, Course.NumberOfCredits, StudentHasCourse.Grade, StudentHasCourse.InProgress FROM Student INNER JOIN StudentHasMajor ON Student.StudentNumber = StudentHasMajor.StudentNumber INNER JOIN Major ON StudentHasMajor.MajorCode = Major.MajorCode INNER JOIN StudentHasMinor ON StudentHasMinor.StudentNumber = Student.StudentNumber INNER JOIN Minor ON StudentHasMinor.MinorCode = Minor.MinorCode INNER JOIN StudentHasCourse ON Student.StudentNumber = StudentHasCourse.StudentNumber INNER JOIN Course ON StudentHasCourse.CourseNumber = Course.CourseNumber CROSS JOIN GPAReference"></asp:SqlDataSource>
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="StudentNumber,MajorCode,MinorCode" DataSourceID="spiderwebDdb" Visible="False">
             <Columns>
                 <asp:BoundField DataField="FirstName" HeaderText="FirstName" SortExpression="FirstName" />
                 <asp:BoundField DataField="LastName" HeaderText="LastName" SortExpression="LastName" />

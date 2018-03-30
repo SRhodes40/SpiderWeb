@@ -14,7 +14,10 @@ public partial class Search : System.Web.UI.Page
     [DataObjectMethod(DataObjectMethodType.Select)]
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if(IsPostBack == true)
+        {
+            studentDL.Visible = true;
+        }
     }
     SqlConnection conn;
     SqlCommand cmd;
@@ -23,7 +26,7 @@ public partial class Search : System.Web.UI.Page
     ListItem listItem;
     int numRowsAffected;
 
-    protected void searchcourseBtn_Click(object sender, EventArgs e)
+    protected void studentsearchBtn_Click(object sender, EventArgs e)
     {
 
         // Show message box
@@ -34,8 +37,8 @@ public partial class Search : System.Web.UI.Page
         cmd = new SqlCommand();
         cmd.Connection = conn;
         cmd.CommandType = CommandType.Text;
-        cmd.CommandText = ("SELECT * FROM Student WHERE LastName = '" + courseTxt.Text + "' ORDER BY StudentNumber");
-       
+        cmd.CommandText = ("SELECT * FROM Student WHERE Student.LastName LIKE '" + studentTxt.Text + "' ORDER BY StudentNumber");
+        dr = cmd.ExecuteReader();
         conn.Close();
     }
 
