@@ -37,7 +37,7 @@ public partial class Search : System.Web.UI.Page
         cmd = new SqlCommand();
         cmd.Connection = conn;
         cmd.CommandType = CommandType.Text;
-        cmd.CommandText = ("SELECT * FROM Student WHERE Student.LastName LIKE '" + studentTxt.Text + "' ORDER BY StudentNumber");
+        cmd.CommandText = "SELECT * FROM Student WHERE Student.LastName LIKE '" + studentTxt.Text + "%" +"' ORDER BY StudentNumber";
         dr = cmd.ExecuteReader();
         conn.Close();
     }

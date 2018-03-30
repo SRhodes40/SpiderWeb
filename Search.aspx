@@ -22,7 +22,7 @@
         &nbsp
         </div>
      
-        <asp:Label ID="studentsearchLbl" runat="server" Text="Enter Student Name:"></asp:Label>
+        <asp:Label ID="studentsearchLbl" runat="server" Text="Enter Student Last Name:"></asp:Label>
         &nbsp
         <asp:TextBox ID="studentTxt" runat="server"></asp:TextBox>
         &nbsp
