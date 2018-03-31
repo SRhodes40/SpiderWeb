@@ -9,14 +9,24 @@ using System.Data.SqlClient;  // SqlConnection, SqlCommand, SqlDataReader
 using System.Configuration;   // to get the connection from Web.config
 using System.ComponentModel;  // DataObject, DataObjectMethod
 
+[DataObject(true)]
 public partial class Search : System.Web.UI.Page
 {
     [DataObjectMethod(DataObjectMethodType.Select)]
+   
     protected void Page_Load(object sender, EventArgs e)
     {
-        if(IsPostBack == true)
+        if(!IsPostBack)
         {
-            studentDL.Visible = true;
+            DataSet ds;
+            SqlDataAdapter da;
+            string connectionString;
+            connectionString = getConnectionString();
+            ds = new DataSet();
+            da = new SqlDataAdapter("SELECT * FROM Student WHERE Student.LastName LIKE '" + studentTxt.Text + "%" + "' ORDER BY StudentNumber", connectionString);
+            studentDL.DataSource = ds;
+            da.Fill(ds);
+            return;
         }
     }
     SqlConnection conn;
@@ -36,10 +46,11 @@ public partial class Search : System.Web.UI.Page
         conn.Open();
         cmd = new SqlCommand();
         cmd.Connection = conn;
-        cmd.CommandType = CommandType.Text;
-        cmd.CommandText = "SELECT * FROM Student WHERE Student.LastName LIKE '" + studentTxt.Text + "%" +"' ORDER BY StudentNumber";
-        dr = cmd.ExecuteReader();
-        conn.Close();
+       // cmd.CommandType = CommandType.Text;
+        //cmd.CommandText = "SELECT * FROM Student WHERE Student.LastName LIKE '" + studentTxt.Text + "%" +"' ORDER BY StudentNumber";
+       // dr = cmd.ExecuteReader();
+      conn.Close();
+      
     }
 
 
@@ -47,4 +58,6 @@ public partial class Search : System.Web.UI.Page
     {
         return ConfigurationManager.ConnectionStrings["SpiderWebConnectionString"].ConnectionString;
     }
+
+  
 }
