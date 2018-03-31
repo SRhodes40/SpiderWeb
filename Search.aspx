@@ -24,7 +24,7 @@
      
         <asp:Label ID="studentsearchLbl" runat="server" Text="Enter Student Last Name:"></asp:Label>
         &nbsp
-        <asp:TextBox ID="studentTxt" runat="server"></asp:TextBox>
+        <asp:TextBox ID="studentTxt" runat="server" AutoPostBack="True"></asp:TextBox>
         &nbsp
         &nbsp
         &nbsp
@@ -33,47 +33,50 @@
         <asp:Label ID="coursesearchLbl" runat="server" Text="Enter Course Code:"></asp:Label>
         &nbsp
         <asp:TextBox ID="courseTxt" runat="server"></asp:TextBox>
+        <br />
+        <asp:Label ID="returnLbl" runat="server" Text="Please press enter or return when you finsh typing a name."></asp:Label>
         <p>
-            <asp:Button ID="studentsearchBtn" runat="server" Text="Search" OnClick="studentsearchBtn_Click" />
-            <asp:DataList ID="studentDL" runat="server" DataKeyField="StudentNumber" DataSourceID="spiderwebDdb" Visible="False">
+            <asp:Button ID="studentsearchBtn" runat="server" Text="Search" OnClick="studentsearchBtn_Click" Visible="False" />
+            <asp:DataList ID="studentDL" runat="server" DataKeyField="StudentNumber" Visible="False">
                 <ItemTemplate>
-                    FirstName:
+                     Name:
                     <asp:Label ID="FirstNameLabel" runat="server" Text='<%# Eval("FirstName") %>' />
-                    <br />
-                    LastName:
+                    &nbsp
+                    <asp:Label ID="Label1" runat="server" Text='<%# Eval("MiddleInitial") %>' />
+                     &nbsp
                     <asp:Label ID="LastNameLabel" runat="server" Text='<%# Eval("LastName") %>' />
                     <br />
-                    MiddleInitial:
-                    <asp:Label ID="MiddleInitialLabel" runat="server" Text='<%# Eval("MiddleInitial") %>' />
-                    <br />
+                   
+                    
+                    
                     Age:
                     <asp:Label ID="AgeLabel" runat="server" Text='<%# Eval("Age") %>' />
                     <br />
                     GPA:
                     <asp:Label ID="GPALabel" runat="server" Text='<%# Eval("GPA") %>' />
                     <br />
-                    StudentNumber:
+                    Student ID Number:
                     <asp:Label ID="StudentNumberLabel" runat="server" Text='<%# Eval("StudentNumber") %>' />
                     <br />
-                    ClassYear:
+                    Graduation Year:
                     <asp:Label ID="ClassYearLabel" runat="server" Text='<%# Eval("ClassYear") %>' />
                     <br />
-                    MajorCode:
+                    Major:
                     <asp:Label ID="MajorCodeLabel" runat="server" Text='<%# Eval("MajorCode") %>' />
                     <br />
-                    MinorCode:
+                    Minor:
                     <asp:Label ID="MinorCodeLabel" runat="server" Text='<%# Eval("MinorCode") %>' />
                     <br />
-                    CourseNumber:
+                    Course Code:
                     <asp:Label ID="CourseNumberLabel" runat="server" Text='<%# Eval("CourseNumber") %>' />
                     <br />
-                    NumberOfCredits:
+                    Number Of Credits For Course:
                     <asp:Label ID="NumberOfCreditsLabel" runat="server" Text='<%# Eval("NumberOfCredits") %>' />
                     <br />
-                    Grade:
+                    Grade In Course:
                     <asp:Label ID="GradeLabel" runat="server" Text='<%# Eval("Grade") %>' />
                     <br />
-                    InProgress:
+                    Is class currently in progress?:
                     <asp:Label ID="InProgressLabel" runat="server" Text='<%# Eval("InProgress") %>' />
                     <br />
 <br />
