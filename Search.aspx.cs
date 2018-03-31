@@ -28,7 +28,15 @@ public partial class Search : System.Web.UI.Page
             da.Fill(ds);
             studentDL.DataSource = ds;
             studentDL.DataBind();
-            studentDL.Visible = true;
+            if (studentTxt.Text == "")
+            {
+                studentDL.Visible = false;
+            }
+            else
+            {
+                studentDL.Visible = true;
+            }
+
         }
     }
     SqlConnection conn;

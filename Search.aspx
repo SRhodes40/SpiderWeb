@@ -34,7 +34,7 @@
         &nbsp
         <asp:TextBox ID="courseTxt" runat="server"></asp:TextBox>
         <br />
-        <asp:Label ID="returnLbl" runat="server" Text="Please press enter or return when you finsh typing a name."></asp:Label>
+        <asp:Label ID="returnLbl" runat="server" Text="Please press enter or return when you are finished typing a name."></asp:Label>
         <p>
             <asp:Button ID="studentsearchBtn" runat="server" Text="Search" OnClick="studentsearchBtn_Click" Visible="False" />
             <asp:DataList ID="studentDL" runat="server" DataKeyField="StudentNumber" Visible="False">
