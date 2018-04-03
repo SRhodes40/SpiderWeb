@@ -6,21 +6,37 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "SpiderWeb", ".", "{1A211316-4690-4EA6-A1B7-5963ACBE1DE6}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+<<<<<<< HEAD
+		Debug.AspNetCompiler.VirtualPath = "/localhost_61530"
+		Debug.AspNetCompiler.PhysicalPath = "..\SpiderWeb\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_61530\"
+=======
 		Debug.AspNetCompiler.VirtualPath = "/localhost_62420"
 		Debug.AspNetCompiler.PhysicalPath = "..\SpiderWeb\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_62420\"
+>>>>>>> 983bd97b453ebb232e8d5ab7452f29e9d18fd733
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
+<<<<<<< HEAD
+		Release.AspNetCompiler.VirtualPath = "/localhost_61530"
+		Release.AspNetCompiler.PhysicalPath = "..\SpiderWeb\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_61530\"
+=======
 		Release.AspNetCompiler.VirtualPath = "/localhost_62420"
 		Release.AspNetCompiler.PhysicalPath = "..\SpiderWeb\"
 		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_62420\"
+>>>>>>> 983bd97b453ebb232e8d5ab7452f29e9d18fd733
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
+<<<<<<< HEAD
+		VWDPort = "61530"
+=======
 		VWDPort = "62420"
+>>>>>>> 983bd97b453ebb232e8d5ab7452f29e9d18fd733
 		SlnRelativePath = "..\SpiderWeb\"
 	EndProjectSection
 EndProject
