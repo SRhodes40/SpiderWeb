@@ -23,15 +23,19 @@
         </div>
         <asp:Label ID="OldPasswordlbl" runat="server" Text="Old Password:"></asp:Label>
         &nbsp;&nbsp;
-        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+        <asp:TextBox ID="txtOldPassword" runat="server"></asp:TextBox>
         <p>
             <asp:Label ID="NewPasswordlbl" runat="server" Text="New Password:"></asp:Label>
             &nbsp;&nbsp;
-            <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtNewPassword" runat="server"></asp:TextBox>
         </p>
         <asp:Label ID="ConfirmPasswordlbl" runat="server" Text="Confirm Password:"></asp:Label>
         &nbsp;&nbsp;
-        <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
+        <asp:TextBox ID="txtConfirmPassword" runat="server"></asp:TextBox>
+        <p>
+            <asp:Button ID="btnChangePassword" runat="server" OnClick="btnChangePassword_Click" Text="Change Password" />
+            <asp:Label ID="lblPasswordChanged" runat="server" EnableViewState="False"></asp:Label>
+        </p>
     </form>
 </body>
 </html>

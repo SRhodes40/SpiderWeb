@@ -16,4 +16,20 @@ public partial class ChangePassword : System.Web.UI.Page
     {
 
     }
+
+    protected void btnChangePassword_Click(object sender, EventArgs e)
+    {
+
+        if (txtOldPassword.Text == "admin1234" && txtNewPassword.Text == "admin1234")
+        {
+            
+            lblPasswordChanged.Text = "Your password was changed successfully.";
+
+        }
+        else
+        {
+            lblPasswordChanged.Text = "Could not change password";
+        }
+
+    }
 }

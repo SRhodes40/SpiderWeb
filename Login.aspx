@@ -23,6 +23,9 @@
         <asp:Button ID="Loginbtn" runat="server" OnClick="Button1_Click" Text="Login" />
         <asp:Label ID="Loginlbl" runat="server" Text=""></asp:Label>
     </form>
+    <br />
+    <br />
+    <br />
 </body>
     <a href="Search.aspx">Other Navigation Pages, Admin View Only</a>
 </html>

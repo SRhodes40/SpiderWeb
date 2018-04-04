@@ -3,6 +3,6 @@
   <siteMapNode url="Search.aspx" title="Search" description="">
     <siteMapNode url="Results.aspx" title="Results"  description="" />
     <siteMapNode url="ChangePassword.aspx" title="Change Password"  description="" />
-    <siteMapNode url="Logout.aspx" title="Logout"  description="" />
+   
   </siteMapNode>
 </siteMap>

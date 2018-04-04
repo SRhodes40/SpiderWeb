@@ -69,5 +69,10 @@ public partial class Search : System.Web.UI.Page
         return ConfigurationManager.ConnectionStrings["SpiderWebConnectionString"].ConnectionString;
     }
 
-  
+
+
+    protected void btnSearchLogout_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("~/Logout.aspx");
+    }
 }
