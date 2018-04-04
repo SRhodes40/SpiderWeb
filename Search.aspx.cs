@@ -74,6 +74,7 @@ public partial class Search : System.Web.UI.Page
 
     }
 
+<<<<<<< HEAD
         protected void courseBtn_Click(object sender, EventArgs e)
         {
             DataSet ds2;
@@ -103,3 +104,12 @@ public partial class Search : System.Web.UI.Page
             return ConfigurationManager.ConnectionStrings["SpiderWebConnectionString"].ConnectionString;
         }
     }
+=======
+
+
+    protected void btnSearchLogout_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("~/Logout.aspx");
+    }
+}
+>>>>>>> fd15b7ccf87de330a414a2cbfd678c91398546cc

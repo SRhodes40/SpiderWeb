@@ -1,6 +1,5 @@
-﻿body 
-
-{
+﻿body {
     background-image: url("background3.jpg");
     font-size: 30px;
+    background-size: cover;
 }
