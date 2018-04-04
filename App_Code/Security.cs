@@ -11,7 +11,7 @@ using Sodium;
 /// </summary>
 public class Security
 {
-    private static String salt;
+/*   private static String salt;
     private static String hashedPassword;
     private String password;
     private var salt;
@@ -79,5 +79,5 @@ public class Security
     {
         return ConfigurationManager.ConnectionStrings["SpiderWebConnectionString"].ConnectionString;
     } // end of getConnectionString
-
+    */
 }
