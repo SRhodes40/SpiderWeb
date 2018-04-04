@@ -14,11 +14,7 @@
         <div>
             <asp:Menu ID="Menu1" runat="server" DataSourceID="SiteMapDataSDS4" Orientation="Horizontal" RenderingMode="Table" StaticDisplayLevels="2">
             </asp:Menu>
-            <asp:Button ID="btnSearchLogout" runat="server" OnClick="btnSearchLogout_Click" Text="Logout" />
-            <asp:SiteMapDataSource ID="SiteMapDataSDS4" runat="server" />
             &nbsp
-        &nbsp
-        &nbsp
         &nbsp
         &nbsp
         </div>
