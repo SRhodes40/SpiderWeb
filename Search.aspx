@@ -18,20 +18,26 @@
             &nbsp
         &nbsp
         &nbsp
+                  &nbsp &nbsp &nbsp &nbsp   &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+            <asp:Label ID="LastLbl" runat="server" Text="Last Name:"></asp:Label>
+              &nbsp   &nbsp 
+            <asp:Label ID="firstLbl" runat="server" Text="First Name:"></asp:Label>
         </div>
      
-        <asp:Label ID="studentsearchLbl" runat="server" Text="Enter Student Last Name:"></asp:Label>
+        <asp:Label ID="studentsearchLbl" runat="server" Text="Enter Student Name:"></asp:Label>
         &nbsp
         <asp:TextBox ID="studentTxt" runat="server"></asp:TextBox>
+        &nbsp
+            <asp:TextBox ID="firstTxt" runat="server"></asp:TextBox>
+        &nbsp
             <asp:Button ID="studentsearchBtn" runat="server" Text="Search Student" OnClick="studentsearchBtn_Click" />
         &nbsp
         &nbsp
-        &nbsp
-        &nbsp
-        &nbsp
+        <br />
         <asp:Label ID="coursesearchLbl" runat="server" Text="Enter Course Code:"></asp:Label>
         &nbsp
         <asp:TextBox ID="courseTxt" runat="server"></asp:TextBox>
+        &nbsp
         <asp:Button ID="courseBtn" runat="server" Text="Search Course" OnClick="courseBtn_Click" />
         <br />
         <asp:Label ID="returnLbl" runat="server" Text="Please press enter or return when you are finished typing a name." Visible="False"></asp:Label>
