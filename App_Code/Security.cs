@@ -22,41 +22,91 @@ public class Security
 
     public Security()
     {
-        Console.WriteLine(SodiumCore.SodiumVersionString());
+        //Console.WriteLine(SodiumCore.SodiumVersionString());
         //
         // TODO: Add constructor logic here. Maybe further constructors to make it convenient? How will this be used?
         //
     }
 
-    public void CreateUser(String password)
+    public int CreateUser(string password, string username)
     {
+        if (password.Length < 4)
+        {
+            return -1;     // should this be throwing errors, or are we validating user input somewhere else?
+        }
         byte[] salt = GenerateSalt();
-        String saltString = Convert.ToBase64String(salt);
+        string saltString = Convert.ToBase64String(salt);
         this.password = password;
         var hash = PasswordHash.ScryptHashBinary(password, saltString, PasswordHash.Strength.Medium, OUTPUT_LENGTH);
-        String hashString = Convert.ToBase64String(hash);
-        // returns the salt and hashed password to be used to update the relevant tables
+        string hashString = Convert.ToBase64String(hash);
+        InsertUser(username, hashString, saltString, "no");
+        return 0;
     }
 
-    public Boolean Verify(String givenPassword, String givenUserName)
+    public int ChangePassword(string user, string newPassword, string oldPassword)
     {
-        String storedPassword;
-        string hashedPassword;
-        byte[] hashedGiven;
+        if (Verify(user, oldPassword))
+        {
+            return -1;
+        }
+        if (newPassword.Length < 4)
+        {
+            return -2;     // should this be throwing errors, or are we validating user input somewhere else?
+        }
+        byte[] salt = GenerateSalt();
+        string saltString = Convert.ToBase64String(salt);
+        var hash = PasswordHash.ScryptHashBinary(password, saltString, PasswordHash.Strength.Medium, OUTPUT_LENGTH);
+        string hashString = Convert.ToBase64String(hash);
+
+        UpdatePassword(user, newPassword, saltString);
+
+        return 0;
+    }
+
+    public Boolean Verify(string givenUserName, string givenPassword)
+    {
+        string storedPassword = GetPasswordFromDB(givenUserName);
+        string saltStringFromDB = GetSaltFromDB(givenUserName);
+        byte[] hashedGiven = PasswordHash.ScryptHashBinary(givenPassword, saltStringFromDB, PasswordHash.Strength.Medium, OUTPUT_LENGTH);
+        string hashedPassword = Convert.ToBase64String(hashedGiven);
         Boolean passwordIsRight = false;
         
-        hashedPassword = GetPasswordFromDB(givenUserName);
-        String saltStringFromDB = GetSaltFromDB(givenUserName);
-        
-        hashedGiven = PasswordHash.ScryptHashBinary(givenPassword, saltStringFromDB, PasswordHash.Strength.Medium, OUTPUT_LENGTH);
-        storedPassword = Convert.ToBase64String(hashedGiven);
+        if (storedPassword.Equals(hashedPassword))
+        {
+            passwordIsRight = true;
+        }
 
         return passwordIsRight;
     }
 
-    private String GetSaltFromDB(String user)
+    private void UpdatePassword(string user, string newPassword, string newSalt)
     {
-        String salt = "";
+        SqlConnection conn = new SqlConnection(GetConnectionString());
+        SqlCommand cmd;
+
+        try
+        {
+            conn = new SqlConnection(GetConnectionString());
+            conn.Open();
+
+            cmd = new SqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "UPDATE Users SET HashedPassword = " + newPassword + ", Salt = " + newSalt + " WHERE Username = " + user;
+        }
+        finally
+        {
+            if (conn != null)
+            {
+                conn.Close();
+            }
+        }
+        
+    }
+
+    private string GetSaltFromDB(string user)
+    {
+        string salt = "";
         SqlConnection conn = new SqlConnection(GetConnectionString());
         SqlCommand cmd;
         SqlDataReader dr = null;
@@ -70,7 +120,45 @@ public class Security
             cmd = new SqlCommand();
             cmd.Connection = conn;
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "SELECT Salt FROM User WHERE Username = " + user;
+            cmd.CommandText = "SELECT Salt FROM Users WHERE Username = " + user;
+            dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+            while (dr.Read())
+            {
+                salt = (string)dr["Username"];
+            }
+        }
+        finally
+        {
+            if (dr != null)
+            {
+                dr.Close();
+            }
+            if (conn != null)
+            {
+                conn.Close();
+            }
+        }
+
+        return salt;
+    }
+
+    private string GetPasswordFromDB(string user)
+    {
+        string salt = "";
+        SqlConnection conn = new SqlConnection(GetConnectionString());
+        SqlCommand cmd;
+        SqlDataReader dr = null;
+
+        try
+        {
+
+            conn = new SqlConnection(GetConnectionString());
+            conn.Open();
+
+            cmd = new SqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "SELECT HashedPassword FROM Users WHERE Username = " + user;
             dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
             while (dr.Read())
             {
@@ -92,12 +180,10 @@ public class Security
         return salt;
     }
 
-    private String GetPasswordFromDB(String user)
+    private string InsertUser(string user, string password, string salt, string admin)
     {
-        String salt = "";
         SqlConnection conn = new SqlConnection(GetConnectionString());
         SqlCommand cmd;
-        SqlDataReader dr = null;
 
         try
         {
@@ -108,19 +194,17 @@ public class Security
             cmd = new SqlCommand();
             cmd.Connection = conn;
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "SELECT HashedPassword FROM User WHERE Username = " + user;
-            dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
-            while (dr.Read())
-            {
-                salt = (String)dr["Username"];
-            }
+            cmd.CommandText = "IF NOT EXISTS (SELECT * FROM Users WHERE Username = " + user + ")" +
+                "BEGIN" +
+                " INSERT INTO Users VALUES (" + user + ", " + password + ", " + salt + ", " + admin + ")" +
+                " END" +
+                " ELSE" +
+                " BEGIN" +
+                //--do what needs to be done if exists... return an error? Username taken? another method entirely to check first?
+                " END";
         }
         finally
         {
-            if (dr != null)
-            {
-                dr.Close();
-            }
             if (conn != null)
             {
                 conn.Close();
@@ -136,13 +220,18 @@ public class Security
         return ConfigurationManager.ConnectionStrings["SpiderWebConnectionString"].ConnectionString;
     } // end of GetConnectionString
 
-    // Generic Hashing https://bitbeans.gitbooks.io/libsodium-net/content/hashing/generic_hashing.html
-    private byte[] HashingFunctionNew(String givenPassword, String givenName)
+    private byte[] GenerateSalt()
     {
-        String password = givenPassword;
+        return SodiumCore.GetRandomBytes(32);
+    }
+
+    // Generic Hashing https://bitbeans.gitbooks.io/libsodium-net/content/hashing/generic_hashing.html
+    /*private byte[] HashingFunctionNew(String givenPassword, String givenName)
+    {
+        string password = givenPassword;
         byte[] salt = GenerateSalt();
-        String saltString = Convert.ToBase64String(salt);
-        String userName = givenName;
+        string saltString = Convert.ToBase64String(salt);
+        string userName = givenName;
         return GenericHash.HashSaltPersonal(password, null, saltString, userName, 128);
     }
 
@@ -153,10 +242,6 @@ public class Security
         String salt = givenSalt;
         String userName = givenName;
         return GenericHash.HashSaltPersonal(password, null, salt, userName, 128);
-    }
+    }*/
 
-    private byte[] GenerateSalt()
-    {
-        return SodiumCore.GetRandomBytes(32);
-    }
 }
