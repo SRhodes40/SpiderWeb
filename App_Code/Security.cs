@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Configuration;
 using Sodium;
 using System.Data;            // DataSet
 using System.Data.SqlClient;  // SqlConnection, SqlCommand, SqlDataReader
@@ -41,26 +40,18 @@ public class Security
 
     public Boolean Verify(String givenPassword, String givenUserName)
     {
-        byte[] salt;
-        String password;
+        String storedPassword;
         string hashedPassword;
         byte[] hashedGiven;
         Boolean passwordIsRight = false;
-
-
+        
         hashedPassword = GetPasswordFromDB(givenUserName);
         String saltStringFromDB = GetSaltFromDB(givenUserName);
-
-        // 
-        // finds the related salt in the database
-        salt = Convert.FromBase64String(saltStringFromDB);
+        
         hashedGiven = PasswordHash.ScryptHashBinary(givenPassword, saltStringFromDB, PasswordHash.Strength.Medium, OUTPUT_LENGTH);
+        storedPassword = Convert.ToBase64String(hashedGiven);
 
-        // runs the hashingFunction with the combination and compares 
-        //     the result to the stored hashed password
         return passwordIsRight;
-
-
     }
 
     private String GetSaltFromDB(String user)
@@ -156,10 +147,10 @@ public class Security
     }
 
 
-    private byte[] HashingFunctionExisting(String givenPassword, String givenName, byte[] givenSalt)
+    private byte[] HashingFunctionExisting(String givenPassword, String givenName, String givenSalt)
     {
         String password = givenPassword;
-        byte[] salt = givenSalt;
+        String salt = givenSalt;
         String userName = givenName;
         return GenericHash.HashSaltPersonal(password, null, salt, userName, 128);
     }
@@ -168,5 +159,4 @@ public class Security
     {
         return SodiumCore.GetRandomBytes(32);
     }
-
 }
