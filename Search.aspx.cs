@@ -99,11 +99,35 @@ public partial class Search : System.Web.UI.Page
 
 
         }
-        private static string getConnectionString()
+        
+    protected void numberBtn_Click(object sender, EventArgs e)
+    {
+        DataSet ds3;
+        SqlDataAdapter da3;
+        string connectionString;
+        connectionString = getConnectionString();
+        da3 = new SqlDataAdapter("SELECT DISTINCT Student.FirstName, Student.LastName, Student.MiddleInitial, Student.Age, Student.GPA, Student.StudentNumber, Student.ClassYear, Major.MajorCode, Minor.MinorCode, Course.CourseNumber, Course.NumberOfCredits, StudentHasCourse.Grade, StudentHasCourse.InProgress FROM Student INNER JOIN StudentHasMajor ON Student.StudentNumber = StudentHasMajor.StudentNumber INNER JOIN Major ON StudentHasMajor.MajorCode = Major.MajorCode INNER JOIN StudentHasMinor ON StudentHasMinor.StudentNumber = Student.StudentNumber INNER JOIN Minor ON StudentHasMinor.MinorCode = Minor.MinorCode INNER JOIN StudentHasCourse ON Student.StudentNumber = StudentHasCourse.StudentNumber INNER JOIN Course ON StudentHasCourse.CourseNumber = Course.CourseNumber CROSS JOIN GPAReference WHERE Student.StudentNumber = " + numberTxt.Text   + " ORDER BY StudentNumber", connectionString);
+        ds3 = new DataSet();
+        da3.Fill(ds3);
+        studentDL.DataSource = ds3;
+        studentDL.DataBind();
+
+
+        if (numberTxt.Text == "")
+        {
+            studentDL.Visible = false;
+        }
+        else if (numberTxt.Text == numberTxt.Text)
+        {
+            studentDL.Visible = true;
+        }
+    }
+    private static string getConnectionString()
         {
             return ConfigurationManager.ConnectionStrings["SpiderWebConnectionString"].ConnectionString;
         }
-    }
+
+}
 
 
 

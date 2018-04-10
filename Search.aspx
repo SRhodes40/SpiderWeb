@@ -22,17 +22,19 @@
             <asp:Label ID="LastLbl" runat="server" Text="Last Name:"></asp:Label>
               &nbsp   &nbsp 
             <asp:Label ID="firstLbl" runat="server" Text="First Name:"></asp:Label>
-        </div>
+        &nbsp;</div>
      
         <asp:Label ID="studentsearchLbl" runat="server" Text="Enter Student Name:"></asp:Label>
-        &nbsp
-        <asp:TextBox ID="studentTxt" runat="server"></asp:TextBox>
-        &nbsp
-            <asp:TextBox ID="firstTxt" runat="server"></asp:TextBox>
-        &nbsp
+        &nbsp;<asp:TextBox ID="studentTxt" runat="server"></asp:TextBox>
+        &nbsp&nbsp;&nbsp;&nbsp;
+            <asp:TextBox ID="firstTxt" runat="server" Width="120px"></asp:TextBox>
+        &nbsp;
             <asp:Button ID="studentsearchBtn" runat="server" Text="Search Student" OnClick="studentsearchBtn_Click" />
         &nbsp
-        &nbsp
+        <br />
+        <asp:Label ID="numberLbl" runat="server" Text="Enter Student Number:"></asp:Label>
+        &nbsp;<asp:TextBox ID="numberTxt" runat="server" style="margin-left: 0px" Width="176px"></asp:TextBox>
+        &nbsp;<asp:Button ID="numberBtn" runat="server" Text="Search By Student Number" OnClick="numberBtn_Click" />
         <br />
         <asp:Label ID="coursesearchLbl" runat="server" Text="Enter Course Code:"></asp:Label>
         &nbsp
