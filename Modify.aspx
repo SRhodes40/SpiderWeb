@@ -24,7 +24,7 @@
                 <asp:BoundField DataField="Grade" HeaderText="Grade" SortExpression="Grade" />
             </Columns>
         </asp:GridView>
-        <asp:SqlDataSource ID="Studentddb" runat="server" ConnectionString="<%$ ConnectionStrings:SpiderWebConnectionString %>" SelectCommand="SELECT [StudentNumber], [CourseNumber], [InProgress], [Grade] FROM [StudentHasCourse]" UpdateCommand="UPDATE StudentHasCourse SET InProgress = InProgress, Grade = Grade" InsertCommand="INSERT INTO StudentHasCourse(InProgress, Grade, CourseNumber, StudentNumber) VALUES (,,,)">
+        <asp:SqlDataSource ID="Studentddb" runat="server" ConnectionString="<%$ ConnectionStrings:SpiderWebConnectionString %>" SelectCommand="SELECT [StudentNumber], [CourseNumber], [InProgress], [Grade] FROM [StudentHasCourse] ORDER BY [StudentNumber]" UpdateCommand="UPDATE StudentHasCourse SET InProgress = InProgress, Grade = Grade" InsertCommand="INSERT INTO StudentHasCourse(InProgress, Grade, CourseNumber, StudentNumber) VALUES (,,,)">
         </asp:SqlDataSource>
         <p>
             <asp:Label ID="lblStatus" runat="server" Text=""></asp:Label>
