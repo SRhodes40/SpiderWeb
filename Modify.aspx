@@ -15,26 +15,36 @@
             </asp:Menu>
             <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" />
         </div>
-        <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="StudentNumber,MajorCode,MinorCode,CourseNumber" DataSourceID="Studentddb">
+        <asp:GridView ID="studentgv" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataSourceID="Studentddb" OnRowDeleted="studentgv_RowDeleted" OnRowDeleting="studentgv_RowDeleting" OnRowEditing="studentgv_RowEditing" OnRowUpdated="studentgv_RowUpdated">
             <Columns>
-                <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" ShowSelectButton="True" />
-                <asp:BoundField DataField="FirstName" HeaderText="FirstName" SortExpression="FirstName" />
-                <asp:BoundField DataField="LastName" HeaderText="LastName" SortExpression="LastName" />
-                <asp:BoundField DataField="MiddleInitial" HeaderText="MiddleInitial" SortExpression="MiddleInitial" />
-                <asp:BoundField DataField="Age" HeaderText="Age" SortExpression="Age" />
-                <asp:BoundField DataField="GPA" HeaderText="GPA" SortExpression="GPA" />
-                <asp:BoundField DataField="StudentNumber" HeaderText="StudentNumber" ReadOnly="True" SortExpression="StudentNumber" />
-                <asp:BoundField DataField="ClassYear" HeaderText="ClassYear" SortExpression="ClassYear" />
-                <asp:BoundField DataField="MajorCode" HeaderText="MajorCode" ReadOnly="True" SortExpression="MajorCode" />
-                <asp:BoundField DataField="MinorCode" HeaderText="MinorCode" ReadOnly="True" SortExpression="MinorCode" />
-                <asp:BoundField DataField="CourseNumber" HeaderText="CourseNumber" ReadOnly="True" SortExpression="CourseNumber" />
-                <asp:BoundField DataField="NumberOfCredits" HeaderText="NumberOfCredits" SortExpression="NumberOfCredits" />
-                <asp:BoundField DataField="Grade" HeaderText="Grade" SortExpression="Grade" />
+                <asp:CommandField ShowSelectButton="True" ShowEditButton="True" />
+                <asp:BoundField DataField="StudentNumber" HeaderText="StudentNumber" SortExpression="StudentNumber" />
+                <asp:BoundField DataField="CourseNumber" HeaderText="CourseNumber" SortExpression="CourseNumber" />
                 <asp:BoundField DataField="InProgress" HeaderText="InProgress" SortExpression="InProgress" />
+                <asp:BoundField DataField="Grade" HeaderText="Grade" SortExpression="Grade" />
             </Columns>
         </asp:GridView>
-        <asp:SqlDataSource ID="Studentddb" runat="server" ConnectionString="<%$ ConnectionStrings:SpiderWebConnectionString %>" DeleteCommand="DELETE FROM Student" SelectCommand="SELECT DISTINCT Student.FirstName, Student.LastName, Student.MiddleInitial, Student.Age, Student.GPA, Student.StudentNumber, Student.ClassYear, Major.MajorCode, Minor.MinorCode, Course.CourseNumber, Course.NumberOfCredits, StudentHasCourse.Grade, StudentHasCourse.InProgress FROM Student INNER JOIN StudentHasMajor ON Student.StudentNumber = StudentHasMajor.StudentNumber INNER JOIN Major ON StudentHasMajor.MajorCode = Major.MajorCode INNER JOIN StudentHasMinor ON StudentHasMinor.StudentNumber = Student.StudentNumber INNER JOIN Minor ON StudentHasMinor.MinorCode = Minor.MinorCode INNER JOIN StudentHasCourse ON Student.StudentNumber = StudentHasCourse.StudentNumber INNER JOIN Course ON StudentHasCourse.CourseNumber = Course.CourseNumber CROSS JOIN GPAReference" UpdateCommand="UPDATE Student, Course SET FirstName =, LastName =, MiddleInitial =, Age =, GPA =, StudentNumber =, ClassYear = FROM Student INNER JOIN StudentHasCourse ON Student.StudentNumber = StudentHasCourse.StudentNumber INNER JOIN StudentHasMajor ON Student.StudentNumber = StudentHasMajor.StudentNumber INNER JOIN StudentHasMinor ON Student.StudentNumber = StudentHasMinor.StudentNumber INNER JOIN Course ON StudentHasCourse.CourseNumber = Course.CourseNumber INNER JOIN hasGPA ON Student.StudentNumber = hasGPA.StudentNumber INNER JOIN CoursesInMajor ON Course.CourseNumber = CoursesInMajor.CourseNumber">
+        <asp:SqlDataSource ID="Studentddb" runat="server" ConnectionString="<%$ ConnectionStrings:SpiderWebConnectionString %>" SelectCommand="SELECT [StudentNumber], [CourseNumber], [InProgress], [Grade] FROM [StudentHasCourse]" UpdateCommand="UPDATE StudentHasCourse SET InProgress = InProgress, Grade = Grade" InsertCommand="INSERT INTO StudentHasCourse(InProgress, Grade, CourseNumber, StudentNumber) VALUES (,,,)">
         </asp:SqlDataSource>
+        <p>
+            <asp:Label ID="lblStatus" runat="server" Text=""></asp:Label>
+        </p>
+        <asp:Label ID="stunumbLbl" runat="server" Text="Student Number:"></asp:Label>
+        &nbsp;<asp:TextBox ID="stunumbTxt" runat="server"></asp:TextBox>
+        <br />
+        <asp:Label ID="coursenumbLbl" runat="server" Text="Course Number:"></asp:Label>
+        &nbsp;<asp:TextBox ID="coursenumbTxt" runat="server"></asp:TextBox>
+        <br />
+        <asp:Label ID="progressLbl" runat="server" Text="In Progress? (Y/N)"></asp:Label>
+        &nbsp;<asp:TextBox ID="progressTxt" runat="server"></asp:TextBox>
+        <br />
+        <asp:Label ID="gradeLbl" runat="server" Text="Grade:"></asp:Label>
+        &nbsp;<asp:TextBox ID="gradeTxt" runat="server"></asp:TextBox>
+        <br />
+        <asp:Button ID="insertBtn" runat="server" Text="Insert" OnClick="insertBtn_Click" />
+        <br />
+        <br />
+        <br />
     </form>
 </body>
 </html>
