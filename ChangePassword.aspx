@@ -8,8 +8,9 @@
     <link rel="stylesheet" type="text/css" href="Style.css"/>
 </head>
 <body>
+     <h2>Project SpiderWeb Change Password</h2>
     <form id="form1" runat="server">
-    <h2>Project SpiderWeb Change Password</h2>
+   
         <div>
             <asp:Menu ID="Menu1" runat="server" DataSourceID="SiteMapSDS" Orientation="Horizontal" RenderingMode="Table" StaticDisplayLevels="2">
             </asp:Menu>
