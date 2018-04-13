@@ -14,8 +14,9 @@ public partial class Login : System.Web.UI.Page
 
     protected void Button1_Click(object sender, EventArgs e)
     {
-      
-        if (UserNametxt.Text == "admin" && Passwordtxt.Text == "admin1234")
+
+        Security testSec = new Security();
+        if (testSec.Verify(UserNametxt.Text, Passwordtxt.Text))
         {
             Response.Redirect("~/Search.aspx");
         }
