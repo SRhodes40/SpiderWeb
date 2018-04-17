@@ -17,7 +17,6 @@
         </div>
         <asp:GridView ID="studentgv" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataSourceID="Studentddb" OnRowDeleted="studentgv_RowDeleted" OnRowDeleting="studentgv_RowDeleting" OnRowEditing="studentgv_RowEditing" OnRowUpdated="studentgv_RowUpdated">
             <Columns>
-                <asp:CommandField ShowSelectButton="True" ShowEditButton="True" />
                 <asp:BoundField DataField="StudentNumber" HeaderText="StudentNumber" SortExpression="StudentNumber" />
                 <asp:BoundField DataField="CourseNumber" HeaderText="CourseNumber" SortExpression="CourseNumber" />
                 <asp:BoundField DataField="InProgress" HeaderText="InProgress" SortExpression="InProgress" />
@@ -42,6 +41,8 @@
         &nbsp;<asp:TextBox ID="gradeTxt" runat="server"></asp:TextBox>
         <br />
         <asp:Button ID="insertBtn" runat="server" Text="Insert" OnClick="insertBtn_Click" />
+        &nbsp;
+        <asp:Button ID="deleteBtn" runat="server" Text="Delete" OnClick="deleteBtn_Click" />
         <br />
         <br />
         <br />

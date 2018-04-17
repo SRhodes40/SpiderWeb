@@ -91,7 +91,7 @@ public partial class Modify : System.Web.UI.Page
                 lblStatus.Text = ex.Message;//"Person not found.";
             }
             conn.Close();
-
+            Response.Redirect("Modify.aspx");
         } // end of Insert
     }
     private string getConnectionString()
@@ -99,4 +99,41 @@ public partial class Modify : System.Web.UI.Page
         return ConfigurationManager.ConnectionStrings["SpiderWebConnectionString"].ConnectionString;
     } // end of getConnectionString
 
+
+    protected void deleteBtn_Click(object sender, EventArgs e)
+    {
+        conn = new SqlConnection(getConnectionString());
+        conn.Open();
+        cmd = new SqlCommand();
+        cmd.Connection = conn;
+        cmd.CommandType = CommandType.Text;
+        cmd.CommandText = "DELETE from StudentHasCourse " +
+            "WHERE StudentNumber ='" + stunumbTxt.Text + "'AND CourseNumber ='" + coursenumbTxt.Text + "'AND InProgress ='" + progressTxt.Text + "'AND Grade ='" + gradeTxt.Text + "'";
+        //Response.Write(cmd.CommandText);
+
+        try
+
+        {
+            numRowsAffected = cmd.ExecuteNonQuery();
+            if (numRowsAffected == 1)
+            {
+                lblStatus.Text = "Submitted";
+
+
+
+
+            }
+            else
+            {
+                lblStatus.Text = "Submit Failed";
+            }
+        }
+        catch (Exception ex)
+        {
+            lblStatus.Text = ex.Message;//"Person not found.";
+        }
+        
+        conn.Close();
+        Response.Redirect("Modify.aspx");
+    }
 }
