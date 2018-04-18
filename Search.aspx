@@ -44,7 +44,35 @@
         <br />
         <asp:Label ID="returnLbl" runat="server" Text="Please press enter or return when you are finished typing a name." Visible="False"></asp:Label>
         <p>
-            <asp:DataList ID="studentDL" runat="server" DataKeyField="StudentNumber" Visible="False">
+            <asp:DataList ID="numberDL" runat="server"  DataKeyField="StudentNumber" Visible="False" CellPadding="0" CellSpacing="5" Font-Bold="False" Font-Italic="False" Font-Overline="False" Font-Strikeout="False" Font-Underline="False" GridLines="Both" RepeatColumns="5">
+              <ItemTemplate>
+                Name:
+                    <asp:Label ID="FirstNameLabel" runat="server" Text='<%# Eval("FirstName") %>' />
+                     &nbsp
+                    <asp:Label ID="LastNameLabel" runat="server" Text='<%# Eval("LastName") %>' />
+                    <br />
+                   
+                    
+                    
+                 
+           
+                    Major:
+                    <asp:Label ID="MajorCodeLabel" runat="server" Text='<%# Eval("MajorCode") %>' />
+                    <br />
+                    Minor:
+                    <asp:Label ID="MinorCodeLabel" runat="server" Text='<%# Eval("MinorCode") %>' />
+                    <br />
+                    Course Code:
+                    <asp:Label ID="CourseNumberLabel" runat="server" Text='<%# Eval("CourseNumber") %>' />
+                    <br />
+               
+                    Is class currently in progress?:
+                    <asp:Label ID="InProgressLabel" runat="server" Text='<%# Eval("InProgress") %>' />
+                    <br />
+<br />
+                </ItemTemplate>
+            </asp:DataList>
+            <asp:DataList ID="studentDL" runat="server" DataKeyField="StudentNumber" Visible="False" CellPadding="0" CellSpacing="5" Font-Bold="False" Font-Italic="False" Font-Overline="False" Font-Strikeout="False" Font-Underline="False" GridLines="Both" RepeatColumns="5">
                 <ItemTemplate>
                      Name:
                     <asp:Label ID="FirstNameLabel" runat="server" Text='<%# Eval("FirstName") %>' />
@@ -75,7 +103,7 @@
 
             </asp:DataList>
           
-            <asp:DataList ID="courseDL" runat="server" DataKeyField="CourseNumber" Visible="False">
+            <asp:DataList ID="courseDL" runat="server" DataKeyField="CourseNumber" Visible="False" CellPadding="3" GridLines="Both" RepeatColumns="5">
                 <ItemTemplate>
                      Course:
                     <asp:Label ID="CourseLabel" runat="server" Text='<%# Eval("CourseNumber") %>' />
@@ -95,7 +123,7 @@
             </asp:DataList>
         </p>
         <asp:SqlDataSource ID="spiderwebDdb" runat="server" ConnectionString="<%$ ConnectionStrings:SpiderWebConnectionString %>" SelectCommand="SELECT DISTINCT Student.FirstName, Student.LastName, Student.MiddleInitial, Student.Age, Student.GPA, Student.StudentNumber, Student.ClassYear, Major.MajorCode, Minor.MinorCode, Course.CourseNumber, Course.NumberOfCredits, StudentHasCourse.Grade, StudentHasCourse.InProgress FROM Student INNER JOIN StudentHasMajor ON Student.StudentNumber = StudentHasMajor.StudentNumber INNER JOIN Major ON StudentHasMajor.MajorCode = Major.MajorCode INNER JOIN StudentHasMinor ON StudentHasMinor.StudentNumber = Student.StudentNumber INNER JOIN Minor ON StudentHasMinor.MinorCode = Minor.MinorCode INNER JOIN StudentHasCourse ON Student.StudentNumber = StudentHasCourse.StudentNumber INNER JOIN Course ON StudentHasCourse.CourseNumber = Course.CourseNumber CROSS JOIN GPAReference"></asp:SqlDataSource>
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="StudentNumber,MajorCode,MinorCode" DataSourceID="spiderwebDdb" Visible="False">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="StudentNumber,MajorCode,MinorCode"  Visible="False" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
             <Columns>
                 <asp:BoundField DataField="FirstName" HeaderText="FirstName" SortExpression="FirstName" />
                 <asp:BoundField DataField="LastName" HeaderText="LastName" SortExpression="LastName" />
