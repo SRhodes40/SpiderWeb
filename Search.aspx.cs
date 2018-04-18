@@ -139,6 +139,9 @@ public partial class Search : System.Web.UI.Page
         da3.Fill(ds3);
         numberDL.DataSource = ds3;
         numberDL.DataBind();
+        firstTxt.Text = "";
+        studentTxt.Text = "";
+        courseTxt.Text = "";
 
 
         if (numberTxt.Text == "")
@@ -177,6 +180,11 @@ public partial class Search : System.Web.UI.Page
 
 
     protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void Menu1_MenuItemClick(object sender, MenuEventArgs e)
     {
 
     }

@@ -8,13 +8,13 @@
     <link rel="stylesheet" type="text/css" href="Style.css"/>
 </head>
 <body>
-     <h2>Project SpiderWeb Change Password</h2>
     <form id="form1" runat="server">
    
         <div>
-            <asp:Menu ID="Menu1" runat="server" DataSourceID="SiteMapSDS" Orientation="Horizontal" RenderingMode="Table" StaticDisplayLevels="2">
-            </asp:Menu>
+    <h2 style="background-color: #6699FF; border-style: ridge">&nbsp;Project SpiderWeb Change Password</h2>
             <asp:SiteMapDataSource ID="SiteMapSDS" runat="server" />
+             <asp:Menu ID="Menu1" runat="server" DataSourceID="SiteMapSDS" Orientation="Horizontal" RenderingMode="Table" StaticDisplayLevels="2" OnMenuItemClick="Menu1_MenuItemClick">
+            </asp:Menu>
             &nbsp;&nbsp;
             &nbsp;&nbsp;
             &nbsp;&nbsp;

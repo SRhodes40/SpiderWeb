@@ -10,8 +10,9 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <asp:Label ID="modifyLbl" runat="server" Text="Modify or Add Student"></asp:Label>
-             <asp:Menu ID="Menu1" runat="server" DataSourceID="SiteMapDataSource1" Orientation="Horizontal" RenderingMode="Table" StaticDisplayLevels="2">
+    <h2 style="background-color: #6699FF; border-style: ridge">Project SpiderWeb Modify Page</h2>
+    
+             <asp:Menu ID="Menu1" runat="server" DataSourceID="SiteMapDataSource1" Orientation="Horizontal" RenderingMode="Table" StaticDisplayLevels="2" OnMenuItemClick="Menu1_MenuItemClick">
             </asp:Menu>
             <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" />
         </div>

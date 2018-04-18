@@ -8,9 +8,10 @@
     <title>Project SpiderWeb Login</title>
 </head>
 <body>
-    <h2>Project SpiderWeb Login Page</h2>
     <form id="form1" runat="server">
         <div>
+    <h2 style="background-color: #6699FF; border-style: ridge">Project SpiderWeb Login</h2>
+    
         </div>
         <asp:Label ID="UserNamelbl" runat="server" Text="User Name: "></asp:Label>
       &nbsp;&nbsp;
@@ -25,5 +26,5 @@
     </form>
     <br />
 </body>
-    <a href="Search.aspx">Other Navigation Pages, Admin View Only</a>
+ 
 </html>

@@ -178,6 +178,11 @@ public partial class Modify : System.Web.UI.Page
 
         conn.Close();
         Response.Redirect("Modify.aspx"); */
-    } 
+    }
+
+    protected void Menu1_MenuItemClick(object sender, MenuEventArgs e)
+    {
+
+    }
 }
 
