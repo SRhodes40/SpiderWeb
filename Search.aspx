@@ -15,32 +15,68 @@
             <asp:Menu ID="Menu1" runat="server" DataSourceID="SiteMapDataSource1" Orientation="Horizontal" RenderingMode="Table" StaticDisplayLevels="2">
             </asp:Menu>
             <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" />
-            &nbsp
-        &nbsp
-        &nbsp
-                  &nbsp &nbsp &nbsp &nbsp   &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<h2>Search by Student Name</h2>
+&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;
+        &nbsp&nbsp;&nbsp;&nbsp;
+        &nbsp &nbsp &nbsp &nbsp
+        &nbsp &nbsp &nbsp &nbsp
+                  &nbsp 
+
+
             <asp:Label ID="LastLbl" runat="server" Text="Last Name:"></asp:Label>
-              &nbsp   &nbsp 
+              &nbsp &nbsp  
             <asp:Label ID="firstLbl" runat="server" Text="First Name:"></asp:Label>
-        &nbsp;</div>
+            &nbsp   &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+              &nbsp   &nbsp 
+            &nbsp;</div>
      
         <asp:Label ID="studentsearchLbl" runat="server" Text="Enter Student Name:"></asp:Label>
         &nbsp;<asp:TextBox ID="studentTxt" runat="server"></asp:TextBox>
         &nbsp&nbsp;&nbsp;&nbsp;
+         
             <asp:TextBox ID="firstTxt" runat="server" Width="120px"></asp:TextBox>
         &nbsp;
+
             <asp:Button ID="studentsearchBtn" runat="server" Text="Search Student" OnClick="studentsearchBtn_Click" />
-        &nbsp
+        &nbsp&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;
+        &nbsp&nbsp;&nbsp;&nbsp;
+        &nbsp &nbsp &nbsp &nbsp
+        &nbsp &nbsp &nbsp &nbsp<br />
         <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+&nbsp;<br />
+        <br />
+         <h2>&nbsp;Search by Student Number</h2>
+       
         <asp:Label ID="numberLbl" runat="server" Text="Enter Student Number:"></asp:Label>
         &nbsp;<asp:TextBox ID="numberTxt" runat="server" style="margin-left: 0px" Width="176px"></asp:TextBox>
         &nbsp;<asp:Button ID="numberBtn" runat="server" Text="Search By Student Number" OnClick="numberBtn_Click" Width="228px" />
+        &nbsp&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;
+        &nbsp&nbsp;&nbsp;&nbsp;
+        &nbsp &nbsp &nbsp &nbsp
+        &nbsp &nbsp &nbsp &nbsp<br />
         <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+&nbsp;<h2>Search by Course Number</h2>
+        
         <asp:Label ID="coursesearchLbl" runat="server" Text="Enter Course Code:"></asp:Label>
         &nbsp
         <asp:TextBox ID="courseTxt" runat="server"></asp:TextBox>
         &nbsp
         <asp:Button ID="courseBtn" runat="server" Text="Search Course" OnClick="courseBtn_Click" />
+         &nbsp&nbsp;<br />
         <br />
         <asp:Label ID="returnLbl" runat="server" Text="Please press enter or return when you are finished typing a name." Visible="False"></asp:Label>
         <p>
