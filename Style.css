@@ -9,4 +9,14 @@ H2 {
     text-decoration: underline;
 }
 
+div.container {
+    width: 100%;
+}
+
+header, footer {
+    color: white;
+    background-color: black;
+    text-align: center;
+}
+
 
