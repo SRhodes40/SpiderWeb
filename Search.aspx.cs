@@ -70,7 +70,7 @@ public partial class Search : System.Web.UI.Page
             SqlDataAdapter da2;
             string connectionString;
             connectionString = getConnectionString();
-            da2 = new SqlDataAdapter("SELECT DISTINCT Student.FirstName, Student.LastName, Student.MiddleInitial, Student.Age, Student.GPA, Student.StudentNumber, Student.ClassYear, Course.CourseNumber, Course.NumberOfCredits, Course.CourseDescription, StudentHasCourse.InProgress, StudentHasCourse.Grade FROM Student INNER JOIN StudentHasCourse ON Student.StudentNumber = StudentHasCourse.StudentNumber INNER JOIN Course ON StudentHasCourse.CourseNumber = Course.CourseNumber WHERE Course.CourseNumber LIKE '" + courseTxt.Text + "%" + "' ORDER BY Student.LastName", connectionString);
+            da2 = new SqlDataAdapter("SELECT DISTINCT Student.FirstName, Student.LastName, Student.MiddleInitial, Student.Age, Student.GPA, Student.StudentNumber, Student.ClassYear, Course.CourseNumber, Course.NumberOfCredits, Course.CourseDescription, StudentHasCourse.InProgress, StudentHasCourse.Grade FROM Student INNER JOIN StudentHasCourse ON Student.StudentNumber = StudentHasCourse.StudentNumber INNER JOIN Course ON StudentHasCourse.CourseNumber = Course.CourseNumber WHERE Course.CourseNumber LIKE '" + courseTxt.Text + "' AND StudentHasCourse.Grade LIKE '' ORDER BY Student.LastName", connectionString);
             ds2 = new DataSet();
             da2.Fill(ds2);
             courseDL.DataSource = ds2;

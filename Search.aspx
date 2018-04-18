@@ -48,26 +48,14 @@
                 <ItemTemplate>
                      Name:
                     <asp:Label ID="FirstNameLabel" runat="server" Text='<%# Eval("FirstName") %>' />
-                    &nbsp
-                    <asp:Label ID="Label1" runat="server" Text='<%# Eval("MiddleInitial") %>' />
                      &nbsp
                     <asp:Label ID="LastNameLabel" runat="server" Text='<%# Eval("LastName") %>' />
                     <br />
                    
                     
                     
-                    Age:
-                    <asp:Label ID="AgeLabel" runat="server" Text='<%# Eval("Age") %>' />
-                    <br />
-                    GPA:
-                    <asp:Label ID="GPALabel" runat="server" Text='<%# Eval("GPA") %>' />
-                    <br />
-                    Student ID Number:
-                    <asp:Label ID="StudentNumberLabel" runat="server" Text='<%# Eval("StudentNumber") %>' />
-                    <br />
-                    Graduation Year:
-                    <asp:Label ID="ClassYearLabel" runat="server" Text='<%# Eval("ClassYear") %>' />
-                    <br />
+                 
+           
                     Major:
                     <asp:Label ID="MajorCodeLabel" runat="server" Text='<%# Eval("MajorCode") %>' />
                     <br />
@@ -77,12 +65,7 @@
                     Course Code:
                     <asp:Label ID="CourseNumberLabel" runat="server" Text='<%# Eval("CourseNumber") %>' />
                     <br />
-                    Number Of Credits For Course:
-                    <asp:Label ID="NumberOfCreditsLabel" runat="server" Text='<%# Eval("NumberOfCredits") %>' />
-                    <br />
-                    Grade In Course:
-                    <asp:Label ID="GradeLabel" runat="server" Text='<%# Eval("Grade") %>' />
-                    <br />
+               
                     Is class currently in progress?:
                     <asp:Label ID="InProgressLabel" runat="server" Text='<%# Eval("InProgress") %>' />
                     <br />
@@ -99,38 +82,14 @@
                     <br />
                      Name:
                     <asp:Label ID="FirstNameLabel" runat="server" Text='<%# Eval("FirstName") %>' />
-                    &nbsp
-                    <asp:Label ID="Label1" runat="server" Text='<%# Eval("MiddleInitial") %>' />
                      &nbsp
                     <asp:Label ID="LastNameLabel" runat="server" Text='<%# Eval("LastName") %>' />
                     <br />
-                     Age:
-                    <asp:Label ID="AgeLabel" runat="server" Text='<%# Eval("Age") %>' />
-                    <br />
-                    Student ID Number:
-                    <asp:Label ID="StudentNumberLabel" runat="server" Text='<%# Eval("StudentNumber") %>' />
-                    <br />
-                     GPA:
-                    <asp:Label ID="GPALabel" runat="server" Text='<%# Eval("GPA") %>' />
-                    <br />
+                 
+                  
+                
 
-                    Graduation Year:
-                    <asp:Label ID="ClassYearLabel" runat="server" Text='<%# Eval("ClassYear") %>' />
-                    <br />
-                    
-                   
-                    Number of Credits
-                    <asp:Label ID="CreditsLabel" runat="server" Text='<%# Eval("NumberOfCredits") %>' />
-                    <br />
-                    Course Description
-                    <asp:Label ID="CourseDescLabel" runat="server" Text='<%# Eval("CourseDescription") %>' />
-                    <br />
-                    Grade In Course:
-                    <asp:Label ID="GradeLabel" runat="server" Text='<%# Eval("Grade") %>' />
-                    <br />
-                    Is class currently in progress?:
-                    <asp:Label ID="InProgressLabel" runat="server" Text='<%# Eval("InProgress") %>' />
-                    <br />
+                  
                     <br />
                 </ItemTemplate>
             </asp:DataList>

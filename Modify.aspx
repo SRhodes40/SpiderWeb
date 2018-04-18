@@ -17,14 +17,15 @@
         </div>
         <asp:GridView ID="studentgv" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataSourceID="Studentddb" OnRowDeleted="studentgv_RowDeleted" OnRowDeleting="studentgv_RowDeleting" OnRowEditing="studentgv_RowEditing" OnRowUpdated="studentgv_RowUpdated">
             <Columns>
-                <asp:CommandField ShowSelectButton="True" ShowEditButton="True" />
+                <asp:BoundField DataField="FirstName" HeaderText="FirstName" SortExpression="FirstName" />
+                <asp:BoundField DataField="LastName" HeaderText="LastName" SortExpression="LastName" />
                 <asp:BoundField DataField="StudentNumber" HeaderText="StudentNumber" SortExpression="StudentNumber" />
                 <asp:BoundField DataField="CourseNumber" HeaderText="CourseNumber" SortExpression="CourseNumber" />
                 <asp:BoundField DataField="InProgress" HeaderText="InProgress" SortExpression="InProgress" />
                 <asp:BoundField DataField="Grade" HeaderText="Grade" SortExpression="Grade" />
             </Columns>
         </asp:GridView>
-        <asp:SqlDataSource ID="Studentddb" runat="server" ConnectionString="<%$ ConnectionStrings:SpiderWebConnectionString %>" SelectCommand="SELECT [StudentNumber], [CourseNumber], [InProgress], [Grade] FROM [StudentHasCourse] ORDER BY [StudentNumber]" UpdateCommand="UPDATE StudentHasCourse SET InProgress = InProgress, Grade = Grade" InsertCommand="INSERT INTO StudentHasCourse(InProgress, Grade, CourseNumber, StudentNumber) VALUES (,,,)">
+        <asp:SqlDataSource ID="Studentddb" runat="server" ConnectionString="<%$ ConnectionStrings:SpiderWebConnectionString %>" SelectCommand="SELECT Student.FirstName, Student.LastName, StudentHasCourse.StudentNumber, StudentHasCourse.CourseNumber, StudentHasCourse.InProgress, StudentHasCourse.Grade FROM StudentHasCourse INNER JOIN Student ON StudentHasCourse.StudentNumber = Student.StudentNumber ORDER BY StudentHasCourse.StudentNumber" UpdateCommand="UPDATE StudentHasCourse SET InProgress = InProgress, Grade = Grade" InsertCommand="INSERT INTO StudentHasCourse(InProgress, Grade, CourseNumber, StudentNumber) VALUES (,,,)">
         </asp:SqlDataSource>
         <p>
             <asp:Label ID="lblStatus" runat="server" Text=""></asp:Label>
@@ -42,6 +43,10 @@
         &nbsp;<asp:TextBox ID="gradeTxt" runat="server"></asp:TextBox>
         <br />
         <asp:Button ID="insertBtn" runat="server" Text="Insert" OnClick="insertBtn_Click" />
+        &nbsp;
+        <asp:Button ID="deleteBtn" runat="server" Text="Delete" OnClick="deleteBtn_Click" />
+        &nbsp;
+        <asp:Button ID="modifyBtn" runat="server" Text="Modify Student" OnClick="modifyBtn_Click" Visible="False" />
         <br />
         <br />
         <br />
