@@ -15,9 +15,10 @@ public partial class Login : System.Web.UI.Page
     protected void Button1_Click(object sender, EventArgs e)
     {
 
-        Security testSec = new Security();
-        if (testSec.Verify(UserNametxt.Text, Passwordtxt.Text))
+        Security sec = new Security();
+        if (sec.Verify(UserNametxt.Text, Passwordtxt.Text))
         {
+            Session["User"] = UserNametxt.Text;
             Response.Redirect("~/Search.aspx");
         }
         else
