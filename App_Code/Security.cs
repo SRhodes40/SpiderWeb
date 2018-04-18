@@ -43,7 +43,7 @@ public class Security
     public int ChangePassword(string user, string newPassword, string oldPassword)
     {
         user = user.ToUpper();
-        if (Verify(user, oldPassword))
+        if (!Verify(user, oldPassword))
         {
             return -1;
         }
@@ -59,10 +59,6 @@ public class Security
 
         var pbkdf2 = new Rfc2898DeriveBytes(newPassword, salt, 10000);
         byte[] hash = pbkdf2.GetBytes(20);
-
-        //byte[] hashBytes = new byte[36];
-        //Array.Copy(salt, 0, hashBytes, 0, 16);
-        //Array.Copy(hash, 0, hashBytes, 16, 20);
 
         string savedPasswordHash = Convert.ToBase64String(hash);
 
@@ -97,6 +93,14 @@ public class Security
         return passwordIsRight;
     }
 
+    public Boolean IsAdmin(string givenUserName)
+    {
+        givenUserName = givenUserName.ToUpper();
+
+        return GetAdmin(givenUserName).Equals("yes", StringComparison.InvariantCultureIgnoreCase);
+
+    }
+
     private void UpdatePassword(string user, string newPassword, string newSalt)
     {
         SqlConnection conn = new SqlConnection(GetConnectionString());
@@ -124,6 +128,46 @@ public class Security
             }
         }
         
+    }
+
+    private string GetAdmin(string user)
+    {
+        string admin = "";
+        SqlConnection conn = new SqlConnection(GetConnectionString());
+        SqlCommand cmd;
+        SqlDataReader dr = null;
+        DataSet ds = new DataSet();
+        SqlDataAdapter da = new SqlDataAdapter();
+
+        try
+        {
+
+            conn = new SqlConnection(GetConnectionString());
+            conn.Open();
+
+            cmd = new SqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "SELECT Admin FROM Users WHERE Username = @user";
+            cmd.Parameters.AddWithValue("@user", user);
+            da = new SqlDataAdapter(cmd);
+            ds = new DataSet();
+            da.Fill(ds);
+            admin = Convert.ToString(ds.Tables[0].Rows[0][0]);
+        }
+        finally
+        {
+            if (dr != null)
+            {
+                dr.Close();
+            }
+            if (conn != null)
+            {
+                conn.Close();
+            }
+        }
+
+        return admin;
     }
 
     private string GetSaltFromDB(string user)

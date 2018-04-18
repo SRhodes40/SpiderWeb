@@ -18,6 +18,12 @@ public partial class Modify : System.Web.UI.Page
     int numRowsAffected;
     protected void Page_Load(object sender, EventArgs e)
     {
+        Response.Cache.SetCacheability(System.Web.HttpCacheability.NoCache);
+        Response.Cache.SetNoStore();
+        if (Session["User"] == null)
+        {
+            Response.Redirect("Login.aspx");
+        }
 
     }
 
