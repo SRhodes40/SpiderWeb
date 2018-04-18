@@ -18,6 +18,12 @@ public partial class Modify : System.Web.UI.Page
     int numRowsAffected;
     protected void Page_Load(object sender, EventArgs e)
     {
+        Response.Cache.SetCacheability(System.Web.HttpCacheability.NoCache);
+        Response.Cache.SetNoStore();
+        if (Session["User"] == null)
+        {
+            Response.Redirect("Login.aspx");
+        }
 
     }
 
@@ -136,4 +142,42 @@ public partial class Modify : System.Web.UI.Page
         conn.Close();
         Response.Redirect("Modify.aspx");
     }
+
+    protected void modifyBtn_Click(object sender, EventArgs e) { 
+   /* {
+        conn = new SqlConnection(getConnectionString());
+        conn.Open();
+        cmd = new SqlCommand();
+        cmd.Connection = conn;
+        cmd.CommandType = CommandType.Text;
+        cmd.CommandText = "UPDATE StudentHasCourse SET StudentNumber = '" + stunumbTxt.Text + "'AND CourseNumber ='" + coursenumbTxt.Text + "'AND InProgress ='" + progressTxt.Text + "'AND Grade ='" + gradeTxt.Text + "'"
+            + "WHERE StudentNumber ='" + stunumbTxt.Text + "'AND CourseNumber ='" + coursenumbTxt.Text + "'AND InProgress ='" + progressTxt.Text + "'AND Grade ='" + gradeTxt.Text + "'";
+        //Response.Write(cmd.CommandText);
+
+        try
+
+        {
+            numRowsAffected = cmd.ExecuteNonQuery();
+            if (numRowsAffected == 1)
+            {
+                lblStatus.Text = "Submitted";
+
+
+
+
+            }
+            else
+            {
+                lblStatus.Text = "Submit Failed";
+            }
+        }
+        catch (Exception ex)
+        {
+            lblStatus.Text = ex.Message;//"Person not found.";
+        }
+
+        conn.Close();
+        Response.Redirect("Modify.aspx"); */
+    } 
 }
+
