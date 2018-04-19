@@ -188,6 +188,11 @@ public partial class Search : System.Web.UI.Page
     {
 
     }
+
+    protected void studentDL_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        
+    }
 }
 
 

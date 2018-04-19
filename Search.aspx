@@ -42,7 +42,7 @@
         &nbsp&nbsp;&nbsp;&nbsp;
         &nbsp &nbsp &nbsp &nbsp
         &nbsp &nbsp &nbsp &nbsp<br />
-            <asp:DataList ID="studentDL" runat="server" DataKeyField="StudentNumber" Visible="False" CellPadding="0" CellSpacing="5" Font-Bold="False" Font-Italic="False" Font-Overline="False" Font-Strikeout="False" Font-Underline="False" GridLines="Both" RepeatColumns="5">
+            <asp:DataList ID="studentDL" runat="server" DataKeyField="StudentNumber" Visible="False" CellPadding="0" CellSpacing="5" Font-Bold="False" Font-Italic="False" Font-Overline="False" Font-Strikeout="False" Font-Underline="False" GridLines="Both" RepeatColumns="5" OnSelectedIndexChanged="studentDL_SelectedIndexChanged">
                 <ItemTemplate>
                      Name:
                     <asp:Label ID="FirstNameLabel" runat="server" Text='<%# Eval("FirstName") %>' />
