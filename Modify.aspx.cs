@@ -152,7 +152,8 @@ public partial class Modify : System.Web.UI.Page
             cmd.Connection = conn;
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = "UPDATE StudentHasCourse SET InProgress ='" + toProgressTxt.Text + "', Grade ='" + togradeTxt.Text + "'"
-                + " WHERE StudentNumber ='" + stunumbTxt.Text + "' AND CourseNumber ='" + coursenumbTxt.Text + "' AND InProgress ='" + progressTxt.Text + "' AND Grade ='" + gradeTxt.Text + "'";
+                + " WHERE StudentNumber ='" + stunumbTxt.Text + "' AND CourseNumber ='" + coursenumbTxt.Text +
+                "' AND InProgress ='" + progressTxt.Text + "' AND Grade ='" + gradeTxt.Text + "'";
             //Response.Write(cmd.CommandText);
 
             try

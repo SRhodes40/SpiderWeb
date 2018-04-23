@@ -8,10 +8,14 @@
     <title>Project SpiderWeb User Creation</title>
 </head>
 <body>
-    <h2>Project SpiderWeb Add User Page</h2>
+   <h2 style="background-color: #6699FF; border-style: ridge">Project SpiderWeb Add New User</h2>
     <form id="form1" runat="server">
-        <div>
-        </div>
+             <asp:Menu ID="Menu1" runat="server" DataSourceID="SiteMapDataSource1" Orientation="Horizontal" RenderingMode="Table" StaticDisplayLevels="2" >
+                 <StaticHoverStyle BackColor="#6699FF" />
+                 <StaticMenuStyle BackColor="White" BorderColor="#000066" BorderStyle="Double" />
+            </asp:Menu>
+            <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" />
+        <br />
         <asp:Label ID="UserNamelbl" runat="server" Text="User Name: "></asp:Label>
       &nbsp;&nbsp;
         <asp:TextBox ID="UserNametxt" runat="server" BorderStyle="Double"></asp:TextBox>
