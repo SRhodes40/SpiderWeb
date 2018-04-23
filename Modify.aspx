@@ -15,7 +15,7 @@
              <asp:Menu ID="Menu1" runat="server" DataSourceID="SiteMapDataSource2" Orientation="Horizontal" RenderingMode="Table" StaticDisplayLevels="2">
                  <StaticHoverStyle BackColor="#6699FF" />
                  <StaticMenuItemStyle BorderColor="White" />
-                 <StaticMenuStyle BackColor="White" />
+                 <StaticMenuStyle BackColor="White" BorderColor="#000066" BorderStyle="Double" />
             </asp:Menu>
             <asp:SiteMapDataSource ID="SiteMapDataSource2" runat="server" />
         </div>
