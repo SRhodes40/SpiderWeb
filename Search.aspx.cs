@@ -41,20 +41,30 @@ public partial class Search : System.Web.UI.Page
             SqlDataAdapter da;
             string connectionString;
             connectionString = getConnectionString();
-            da = new SqlDataAdapter("SELECT DISTINCT Student.FirstName, Student.LastName, Student.MiddleInitial, Student.Age, Student.GPA, Student.StudentNumber, Student.ClassYear, Major.MajorCode, Minor.MinorCode, Course.CourseNumber, Course.NumberOfCredits, StudentHasCourse.Grade, StudentHasCourse.InProgress FROM Student INNER JOIN StudentHasMajor ON Student.StudentNumber = StudentHasMajor.StudentNumber INNER JOIN Major ON StudentHasMajor.MajorCode = Major.MajorCode INNER JOIN StudentHasMinor ON StudentHasMinor.StudentNumber = Student.StudentNumber INNER JOIN Minor ON StudentHasMinor.MinorCode = Minor.MinorCode INNER JOIN StudentHasCourse ON Student.StudentNumber = StudentHasCourse.StudentNumber INNER JOIN Course ON StudentHasCourse.CourseNumber = Course.CourseNumber CROSS JOIN GPAReference WHERE Student.LastName LIKE '" + studentTxt.Text + "%" + "'AND Student.FirstName LIKE '" + firstTxt.Text + "%" + "' ORDER BY StudentNumber, CourseNumber", connectionString);
+            da = new SqlDataAdapter("SELECT DISTINCT Student.FirstName, Student.LastName, Student.MiddleInitial, Student.Age, Student.GPA, Student.StudentNumber, Student.ClassYear, Major.MajorCode, Minor.MinorCode, Course.CourseNumber, Course.NumberOfCredits, StudentHasCourse.Grade, StudentHasCourse.InProgress FROM Student INNER JOIN StudentHasMajor ON Student.StudentNumber = StudentHasMajor.StudentNumber INNER JOIN Major ON StudentHasMajor.MajorCode = Major.MajorCode INNER JOIN StudentHasMinor ON StudentHasMinor.StudentNumber = Student.StudentNumber INNER JOIN Minor ON StudentHasMinor.MinorCode = Minor.MinorCode INNER JOIN StudentHasCourse ON Student.StudentNumber = StudentHasCourse.StudentNumber INNER JOIN Course ON StudentHasCourse.CourseNumber = Course.CourseNumber CROSS JOIN GPAReference WHERE Student.LastName LIKE '" + studentTxt.Text + "%" + "' AND Student.FirstName LIKE '" + firstTxt.Text + "%" + "' ORDER BY StudentNumber, CourseNumber", connectionString);
             ds = new DataSet();
             da.Fill(ds);
             studentDL.DataSource = ds;
             studentDL.DataBind();
             numberTxt.Text = "";
             courseTxt.Text = "";
+            coursenumLbl.Visible = false;
+            coursetakeLbl.Visible = false;
+            stunumberLbl.Visible = false;
+            numbsearchLbl.Visible = false;
+
+            studentnameLbl.Text = firstTxt.Text + " " + studentTxt.Text;
+            // minorLbl.Text = "Minor.MinorCode";
+            // majorLbl.Text = "Major.MajorCode";
+            string temp1;
+            temp1 = studentTxt.Text + firstTxt.Text;
 
 
-            if (studentTxt.Text == "")
+            if (temp1 == "")
             {
                 studentDL.Visible = false;
             }
-            else if (studentTxt.Text == studentTxt.Text)
+            else if (temp1 == temp1)
             {
                 studentDL.Visible = true;
             }
@@ -74,7 +84,7 @@ public partial class Search : System.Web.UI.Page
             {
                 courseDL.Visible = true;
 
-            }
+            } 
         }
         
 
@@ -94,9 +104,17 @@ public partial class Search : System.Web.UI.Page
             da2.Fill(ds2);
             courseDL.DataSource = ds2;
             courseDL.DataBind();
+        coursenumLbl.Visible = true;
+        coursetakeLbl.Visible = true;
+        coursenumLbl.Text = courseTxt.Text;
         numberTxt.Text = "";
         firstTxt.Text = "";
         studentTxt.Text = "";
+        stunumberLbl.Visible = false;
+        numbsearchLbl.Visible = false;
+        string temp1;
+        temp1 = studentTxt.Text + firstTxt.Text;
+        studentnameLbl.Visible = false;
 
         if (courseTxt.Text == "")
             {
@@ -107,11 +125,11 @@ public partial class Search : System.Web.UI.Page
                 courseDL.Visible = true;
             
             }
-        if (studentTxt.Text == "")
+        if (temp1 == "")
         {
             studentDL.Visible = false;
         }
-        else if (studentTxt.Text == studentTxt.Text)
+        else if (temp1 == studentTxt.Text)
         {
             studentDL.Visible = true;
         }
@@ -142,7 +160,14 @@ public partial class Search : System.Web.UI.Page
         firstTxt.Text = "";
         studentTxt.Text = "";
         courseTxt.Text = "";
-
+        string temp1;
+        temp1 = studentTxt.Text + firstTxt.Text;
+        stunumberLbl.Text = numberTxt.Text;
+        coursenumLbl.Visible = false;
+        coursetakeLbl.Visible = false;
+        stunumberLbl.Visible = true;
+        numbsearchLbl.Visible = true;
+        studentnameLbl.Visible = false;
 
         if (numberTxt.Text == "")
         {
@@ -152,11 +177,11 @@ public partial class Search : System.Web.UI.Page
         {
             numberDL.Visible = true;
         }
-        if (studentTxt.Text == "")
+        if (temp1 == "")
         {
             studentDL.Visible = false;
         }
-        else if (studentTxt.Text == studentTxt.Text)
+        else if (temp1 == temp1)
         {
             studentDL.Visible = true;
         }
@@ -169,6 +194,7 @@ public partial class Search : System.Web.UI.Page
             courseDL.Visible = true;
 
         }
+        
 
     }
    
@@ -192,6 +218,11 @@ public partial class Search : System.Web.UI.Page
     protected void studentDL_SelectedIndexChanged(object sender, EventArgs e)
     {
         
+    }
+
+    protected void numberDL_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
     }
 }
 

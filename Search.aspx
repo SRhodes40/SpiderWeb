@@ -38,17 +38,16 @@
         &nbsp;
 
             <asp:Button ID="studentsearchBtn" runat="server" Text="Search Student" OnClick="studentsearchBtn_Click" />
-        &nbsp&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;
-        &nbsp&nbsp;&nbsp;&nbsp;
-        &nbsp &nbsp &nbsp &nbsp
-        &nbsp &nbsp &nbsp &nbsp<br />
-            <asp:DataList ID="studentDL" runat="server" DataKeyField="StudentNumber" Visible="False" CellPadding="0" CellSpacing="5" Font-Bold="False" Font-Italic="False" Font-Overline="False" Font-Strikeout="False" Font-Underline="False" GridLines="Both" RepeatColumns="5" OnSelectedIndexChanged="studentDL_SelectedIndexChanged">
+        &nbsp<br />
+        <br />
+        
+        <asp:Label ID="studentnameLbl" runat="server" Text=""></asp:Label>
+    
+        
+        <br />
+            <asp:DataList ID="studentDL" runat="server" DataKeyField="StudentNumber" CellPadding="0" CellSpacing="5" Font-Bold="False" Font-Italic="False" Font-Overline="False" Font-Strikeout="False" Font-Underline="False" GridLines="Both" RepeatColumns="5" OnSelectedIndexChanged="studentDL_SelectedIndexChanged" Visible="true">
                 <ItemTemplate>
-                     Name:
-                    <asp:Label ID="FirstNameLabel" runat="server" Text='<%# Eval("FirstName") %>' />
-                     &nbsp
-                    <asp:Label ID="LastNameLabel" runat="server" Text='<%# Eval("LastName") %>' />
-                    <br />
+                   
                    
                     
                     
@@ -80,11 +79,12 @@
         <asp:Label ID="numberLbl" runat="server" Text="Enter Student Number:"></asp:Label>
         &nbsp;<asp:TextBox ID="numberTxt" runat="server" style="margin-left: 0px" Width="176px"></asp:TextBox>
         &nbsp;<asp:Button ID="numberBtn" runat="server" Text="Search By Student Number" OnClick="numberBtn_Click" Width="228px" />
-        &nbsp&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;
-        &nbsp&nbsp;&nbsp;&nbsp;
-        &nbsp &nbsp &nbsp &nbsp
+        &nbsp<br />
+        <br />
+        &nbsp;<asp:Label ID="numbsearchLbl" runat="server" Text="Searched Student Number: " Visible="False"></asp:Label>
+            &nbsp;<asp:Label ID="stunumberLbl" runat="server" Text="" Visible="False"></asp:Label>
         &nbsp &nbsp &nbsp &nbsp<br />
-            <asp:DataList ID="numberDL" runat="server"  DataKeyField="StudentNumber" Visible="False" CellPadding="0" CellSpacing="5" Font-Bold="False" Font-Italic="False" Font-Overline="False" Font-Strikeout="False" Font-Underline="False" GridLines="Both" RepeatColumns="5">
+            <asp:DataList ID="numberDL" runat="server"  DataKeyField="StudentNumber" Visible="False" CellPadding="0" Font-Bold="False" Font-Italic="False" Font-Overline="False" Font-Strikeout="False" Font-Underline="False" GridLines="Both" RepeatColumns="5" OnSelectedIndexChanged="numberDL_SelectedIndexChanged" Width="2100px">
               <ItemTemplate>
                 Name:
                     <asp:Label ID="FirstNameLabel" runat="server" Text='<%# Eval("FirstName") %>' />
@@ -122,20 +122,20 @@
         &nbsp
         <asp:Button ID="courseBtn" runat="server" Text="Search Course" OnClick="courseBtn_Click" />
          &nbsp&nbsp;<br />
-          
-            <asp:DataList ID="courseDL" runat="server" DataKeyField="CourseNumber" Visible="False" CellPadding="3" GridLines="Both" RepeatColumns="1">
-                <ItemTemplate>
-                     Course:
-                    <asp:Label ID="CourseLabel" runat="server" Text='<%# Eval("CourseNumber") %>' />
-                    <br />
-                     Name:
+          <asp:Label ID="coursetakeLbl" runat="server" Text="Students who still need to take: " Visible="False"></asp:Label>
+            <asp:Label ID="coursenumLbl" runat="server" Visible="False"></asp:Label>
+            <asp:DataList ID="courseDL" runat="server" DataKeyField="CourseNumber" Visible="False" CellPadding="3" GridLines="Both" RepeatColumns="1" >
+                <ItemTemplate> 
+                    Name:
                     <asp:Label ID="FirstNameLabel" runat="server" Text='<%# Eval("FirstName") %>' />
                      &nbsp
                     <asp:Label ID="LastNameLabel" runat="server" Text='<%# Eval("LastName") %>' />
                     <br />
+                    Student Number:
+                    <asp:Label ID="StudentNumberLabel" runat="server" Text='<%# Eval("StudentNumber") %>' />
                  
                   
-                
+                    
 
                   
                     <br />
