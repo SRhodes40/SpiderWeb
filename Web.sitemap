@@ -3,8 +3,9 @@
   <siteMapNode url="Search.aspx" title="Search" description="">
     <siteMapNode url="ChangePassword.aspx" title="Change Password"  description="" />
     <siteMapNode url="Modify.aspx" title="Modify"  description="" />
-    <siteMapNode url="Logout.aspx" title="Logout"  description="" />
     <siteMapNode url="AddUser.aspx" title="Add User"  description="" />
+    <siteMapNode url="Logout.aspx" title="Logout"  description="" />
+    
     
   </siteMapNode>
 </siteMap>

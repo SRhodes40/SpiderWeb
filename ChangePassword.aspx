@@ -12,11 +12,11 @@
    
         <div>
     <h2 style="background-color: #6699FF; border-style: ridge">&nbsp;Project SpiderWeb Change Password</h2>
-            <asp:SiteMapDataSource ID="SiteMapSDS" runat="server" />
-             <asp:Menu ID="Menu1" runat="server" DataSourceID="SiteMapSDS" Orientation="Horizontal" RenderingMode="Table" StaticDisplayLevels="2" OnMenuItemClick="Menu1_MenuItemClick">
+             <asp:Menu ID="Menu1" runat="server" DataSourceID="SiteMapDataSource1" Orientation="Horizontal" RenderingMode="Table" StaticDisplayLevels="2" OnMenuItemClick="Menu1_MenuItemClick">
                  <StaticHoverStyle BackColor="#6699FF" />
                  <StaticMenuStyle BackColor="White" BorderColor="#000066" BorderStyle="Double" />
             </asp:Menu>
+            <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" />
             &nbsp;&nbsp;
             &nbsp;&nbsp;
             &nbsp;&nbsp;

@@ -12,12 +12,13 @@
         <div>
     <h2 style="background-color: #6699FF; border-style: ridge">Project SpiderWeb Modify Page</h2>
     
-             <asp:Menu ID="Menu1" runat="server" DataSourceID="SiteMapDataSource2" Orientation="Horizontal" RenderingMode="Table" StaticDisplayLevels="2">
+             <asp:Menu ID="Menu1" runat="server" DataSourceID="SiteMapDataSource1" Orientation="Horizontal" RenderingMode="Table" StaticDisplayLevels="2">
                  <StaticHoverStyle BackColor="#6699FF" />
                  <StaticMenuItemStyle BorderColor="White" />
                  <StaticMenuStyle BackColor="White" BorderColor="#000066" BorderStyle="Double" />
             </asp:Menu>
-            <asp:SiteMapDataSource ID="SiteMapDataSource2" runat="server" />
+            <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" />
+            <br />
         </div>
         <asp:GridView ID="studentgv" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataSourceID="Studentddb" OnRowDeleted="studentgv_RowDeleted" OnRowDeleting="studentgv_RowDeleting" OnRowEditing="studentgv_RowEditing" OnRowUpdated="studentgv_RowUpdated" OnSelectedIndexChanged="studentgv_SelectedIndexChanged" Width="1272px">
             <Columns>
