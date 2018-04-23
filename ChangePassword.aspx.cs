@@ -49,4 +49,11 @@ public partial class ChangePassword : System.Web.UI.Page
             lblPasswordChanged.Text = "Your password was successfully changed.";
         }
     }
+
+
+
+    protected void Menu1_MenuItemClick(object sender, MenuEventArgs e)
+    {
+
+    }
 }

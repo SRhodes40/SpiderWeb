@@ -74,7 +74,7 @@ public partial class Modify : System.Web.UI.Page
             cmd.CommandText = "insert into StudentHasCourse (StudentNumber, CourseNumber, InProgress, Grade) VALUES ('"
                  + stunumbTxt.Text + "','" + coursenumbTxt.Text + "','" + progressTxt.Text + "','"  + gradeTxt.Text + "')";
             //Response.Write(cmd.CommandText);
-
+            Response.Write(cmd.CommandText);
             try
 
             {
@@ -94,9 +94,10 @@ public partial class Modify : System.Web.UI.Page
             }
             catch (Exception ex)
             {
-                lblStatus.Text = ex.Message;//"Person not found.";
+                lblStatus.Text = "Data Incorrect, Submit Failed";//"Person not found.";
             }
             conn.Close();
+            
             Response.Redirect("Modify.aspx");
         } // end of Insert
     }
@@ -131,7 +132,7 @@ public partial class Modify : System.Web.UI.Page
             }
             else
             {
-                lblStatus.Text = "Submit Failed";
+                lblStatus.Text = "Data Incorrect, Submit Failed";
             }
         }
         catch (Exception ex)
@@ -143,41 +144,53 @@ public partial class Modify : System.Web.UI.Page
         Response.Redirect("Modify.aspx");
     }
 
-    protected void modifyBtn_Click(object sender, EventArgs e) { 
-   /* {
-        conn = new SqlConnection(getConnectionString());
-        conn.Open();
-        cmd = new SqlCommand();
-        cmd.Connection = conn;
-        cmd.CommandType = CommandType.Text;
-        cmd.CommandText = "UPDATE StudentHasCourse SET StudentNumber = '" + stunumbTxt.Text + "'AND CourseNumber ='" + coursenumbTxt.Text + "'AND InProgress ='" + progressTxt.Text + "'AND Grade ='" + gradeTxt.Text + "'"
-            + "WHERE StudentNumber ='" + stunumbTxt.Text + "'AND CourseNumber ='" + coursenumbTxt.Text + "'AND InProgress ='" + progressTxt.Text + "'AND Grade ='" + gradeTxt.Text + "'";
-        //Response.Write(cmd.CommandText);
-
-        try
-
+    protected void modifyBtn_Click(object sender, EventArgs e) {
         {
-            numRowsAffected = cmd.ExecuteNonQuery();
-            if (numRowsAffected == 1)
+            conn = new SqlConnection(getConnectionString());
+            conn.Open();
+            cmd = new SqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "UPDATE StudentHasCourse SET InProgress ='" + toProgressTxt.Text + "', Grade ='" + togradeTxt.Text + "'"
+                + " WHERE StudentNumber ='" + stunumbTxt.Text + "' AND CourseNumber ='" + coursenumbTxt.Text + "' AND InProgress ='" + progressTxt.Text + "' AND Grade ='" + gradeTxt.Text + "'";
+            //Response.Write(cmd.CommandText);
+
+            try
+
             {
-                lblStatus.Text = "Submitted";
+                numRowsAffected = cmd.ExecuteNonQuery();
+                if (numRowsAffected == 1)
+                {
+                    lblStatus.Text = "Submitted";
 
 
 
 
+                }
+                else
+                {
+                    lblStatus.Text = "Data Incorrect, Submit Failed";
+                }
             }
-            else
+            catch (Exception ex)
             {
-                lblStatus.Text = "Submit Failed";
+                lblStatus.Text = ex.Message;//"Person not found.";
             }
-        }
-        catch (Exception ex)
-        {
-            lblStatus.Text = ex.Message;//"Person not found.";
+
+            conn.Close();
+           Response.Redirect("Modify.aspx");
         }
 
-        conn.Close();
-        Response.Redirect("Modify.aspx"); */
-    } 
+     
+    }
+
+    protected void studentgv_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        //Response.Write(studentgv.SelectedRow.Cells[3].Text);
+        stunumbTxt.Text = studentgv.SelectedRow.Cells[3].Text;
+        coursenumbTxt.Text = studentgv.SelectedRow.Cells[4].Text;
+        progressTxt.Text = studentgv.SelectedRow.Cells[5].Text;
+        gradeTxt.Text = studentgv.SelectedRow.Cells[6].Text;
+    }
 }
 
