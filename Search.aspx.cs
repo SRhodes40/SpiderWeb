@@ -41,9 +41,9 @@ public partial class Search : System.Web.UI.Page
             SqlDataAdapter da;
             string connectionString;
             connectionString = getConnectionString();
-<<<<<<< HEAD
+
             da = new SqlDataAdapter("SELECT DISTINCT Student.FirstName, Student.LastName, Student.MiddleInitial, Student.Age, Student.GPA, Student.StudentNumber, Student.ClassYear, Major.MajorCode, Minor.MinorCode, Course.CourseNumber, Course.NumberOfCredits, StudentHasCourse.Grade, StudentHasCourse.InProgress FROM Student INNER JOIN StudentHasMajor ON Student.StudentNumber = StudentHasMajor.StudentNumber INNER JOIN Major ON StudentHasMajor.MajorCode = Major.MajorCode INNER JOIN StudentHasMinor ON StudentHasMinor.StudentNumber = Student.StudentNumber INNER JOIN Minor ON StudentHasMinor.MinorCode = Minor.MinorCode INNER JOIN StudentHasCourse ON Student.StudentNumber = StudentHasCourse.StudentNumber INNER JOIN Course ON StudentHasCourse.CourseNumber = Course.CourseNumber CROSS JOIN GPAReference WHERE Student.LastName LIKE '" + studentTxt.Text + "%" + "' AND Student.FirstName LIKE '" + firstTxt.Text + "%" + "' ORDER BY StudentNumber, CourseNumber", connectionString);
-=======
+
             String lastNameSearchField = studentTxt.Text.Replace("'","''");
             String firstNameSearchField = firstTxt.Text.Replace("'", "''");
 
@@ -52,7 +52,7 @@ public partial class Search : System.Web.UI.Page
                 "Student.StudentNumber = StudentHasMajor.StudentNumber INNER JOIN Major ON StudentHasMajor.MajorCode = Major.MajorCode INNER JOIN StudentHasMinor ON StudentHasMinor.StudentNumber = Student.StudentNumber " +
                 "INNER JOIN Minor ON StudentHasMinor.MinorCode = Minor.MinorCode INNER JOIN StudentHasCourse ON Student.StudentNumber = StudentHasCourse.StudentNumber INNER JOIN Course ON StudentHasCourse.CourseNumber = Course.CourseNumber " +
                 "CROSS JOIN GPAReference WHERE Student.LastName LIKE '" + lastNameSearchField + "%" + "'AND Student.FirstName LIKE '" + firstNameSearchField + "%" + "' ORDER BY StudentNumber, CourseNumber", connectionString);
->>>>>>> a3aa8156c5988b9739f2e3aba874b5ded8d1aa8c
+
             ds = new DataSet();
             da.Fill(ds);
             studentDL.DataSource = ds;
