@@ -1,10 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
   <siteMapNode url="Search.aspx" title="Search" description="">
-   
+    <!--  https://stackoverflow.com/questions/2495605/asp-net-web-sitemap-roles-do-not-seem-to-control-visibility -->
     <siteMapNode url="ChangePassword.aspx" title="Change Password"  description="" />
     <siteMapNode url="Modify.aspx" title="Modify"  description="" />
     <siteMapNode url="Logout.aspx" title="Logout"  description="" />
+    <siteMapNode url="AddUser.aspx" title="Add User"  description="" />
     
   </siteMapNode>
 </siteMap>

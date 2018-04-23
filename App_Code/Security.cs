@@ -23,9 +23,9 @@ public class Security
     public int CreateUser(string username, string password)
     {
         username = username.ToUpper();
-        if (password.Length < 4)
+        if (password.Length < 4 || UserExists(username))
         {
-            return -1;     // should this be throwing errors, or are we validating user input somewhere else?
+            return -1;     // this should never be called, we check it elsewhere
         }
         
         // https://stackoverflow.com/questions/4181198/how-to-hash-a-password/10402129#10402129
@@ -91,6 +91,11 @@ public class Security
         }
 
         return passwordIsRight;
+    }
+
+    public Boolean UserExists(String user)
+    {
+        return IsUserInTable(user);
     }
 
     public Boolean IsAdmin(string givenUserName)
@@ -293,14 +298,7 @@ public class Security
             cmd = new SqlCommand();
             cmd.Connection = conn;
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "IF NOT EXISTS (SELECT * FROM Users WHERE Username = @user)" +
-                " BEGIN" +
-                " INSERT INTO Users VALUES (@user, @password, @salt, @admin)" +
-                " END" +
-                " ELSE" +
-                " BEGIN" +
-                //--do what needs to be done if exists... return an error? Username taken? another method entirely to check first?
-                " END";
+            cmd.CommandText = "INSERT INTO Users VALUES (@user, @password, @salt, @admin)";
             cmd.Parameters.AddWithValue("@user", user);
             cmd.Parameters.AddWithValue("@password", password);
             cmd.Parameters.AddWithValue("@salt", salt);
