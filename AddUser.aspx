@@ -26,6 +26,10 @@
         </p>
         <asp:Button ID="Loginbtn" runat="server" OnClick="Button1_Click" Text="Create New User" BorderStyle="Double" />
         <asp:Label ID="Loginlbl" runat="server" Text=""></asp:Label>
+        <p>
+            <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Delete User" BorderStyle="Double" />
+            <asp:Label ID="Label2" runat="server" Text=""></asp:Label>
+            </p>
     </form>
     <br />
 </body>
