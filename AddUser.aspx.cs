@@ -26,6 +26,7 @@ public partial class AddUser : System.Web.UI.Page
         if (Passwordtxt.Text.Length < 4)
         {
             Loginlbl.Text = "Password must be at least 4 characters";
+            Label2.Text = "";
             return;
         }
 
@@ -34,10 +35,38 @@ public partial class AddUser : System.Web.UI.Page
         {
             sec.CreateUser(UserNametxt.Text, Passwordtxt.Text);
             Loginlbl.Text = "User created successfully";
+            Label2.Text = "";
         }
         else
         {
             Loginlbl.Text = "Username already exists";
+            Label2.Text = "";
+        }
+
+
+    }
+
+    protected void Button2_Click(object sender, EventArgs e)
+    {
+        Security sec = new Security();
+        if (!sec.UserExists(UserNametxt.Text))
+        {
+            Label2.Text = "User doesn't exist";
+            Loginlbl.Text = "";
+            return;
+        }
+        
+        try
+        {
+            sec.DeleteUser(UserNametxt.Text);
+            Label2.Text = "User deleted successfully";
+            Loginlbl.Text = "";
+        }
+        catch(Exception ex)
+        {
+            string except = ex.ToString();
+            Label2.Text = "User not deleted";
+            Loginlbl.Text = "";
         }
 
 

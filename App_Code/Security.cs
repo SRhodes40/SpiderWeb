@@ -106,6 +106,35 @@ public class Security
 
     }
 
+    public void DeleteUser(string username)
+    {
+        username = username.ToUpper();
+        SqlConnection conn = new SqlConnection(GetConnectionString());
+        SqlCommand cmd;
+
+        try
+        {
+
+            conn = new SqlConnection(GetConnectionString());
+            conn.Open();
+
+            cmd = new SqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "DELETE FROM Users WHERE Username = @user";
+            cmd.Parameters.AddWithValue("@user", username);
+            cmd.ExecuteNonQuery();
+        }
+        finally
+        {
+            if (conn != null)
+            {
+                conn.Close();
+            }
+        }
+
+    }
+
     private void UpdatePassword(string user, string newPassword, string newSalt)
     {
         SqlConnection conn = new SqlConnection(GetConnectionString());
