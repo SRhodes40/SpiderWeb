@@ -47,14 +47,13 @@
     
         
         <br />
-            <asp:DataList ID="studentDL" runat="server" DataKeyField="StudentNumber" CellPadding="0" CellSpacing="5" Font-Bold="False" Font-Italic="False" Font-Overline="False" Font-Strikeout="False" Font-Underline="False" GridLines="Both" RepeatColumns="5" OnSelectedIndexChanged="studentDL_SelectedIndexChanged" Visible="true">
+            <asp:DataList ID="studentDL" runat="server" DataKeyField="StudentNumber" CellPadding="0" CellSpacing="5" Font-Bold="False" Font-Italic="False" Font-Overline="False" Font-Strikeout="False" Font-Underline="False" GridLines="Both" RepeatColumns="5" OnSelectedIndexChanged="studentDL_SelectedIndexChanged" Visible="true" Width="2100px">
                 <ItemTemplate>
                    
-                   
-                    
-                    
-                 
-           
+                   Name:
+                    <asp:Label ID="FirstNameLabel" runat="server" Text='<%# Eval("FirstName") %>' />
+                     &nbsp
+                    <asp:Label ID="LastNameLabel" runat="server" Text='<%# Eval("LastName") %>' />
                     Major:
                     <asp:Label ID="MajorCodeLabel" runat="server" Text='<%# Eval("MajorCode") %>' />
                     <br />
@@ -126,7 +125,7 @@
          &nbsp&nbsp;<br />
           <asp:Label ID="coursetakeLbl" runat="server" Text="Students who still need to take: " Visible="False"></asp:Label>
             <asp:Label ID="coursenumLbl" runat="server" Visible="False"></asp:Label>
-            <asp:DataList ID="courseDL" runat="server" DataKeyField="CourseNumber" Visible="False" CellPadding="3" GridLines="Both" RepeatColumns="1" >
+            <asp:DataList ID="courseDL" runat="server" DataKeyField="CourseNumber" Visible="False" CellPadding="3" GridLines="Both" RepeatColumns="1" Width="2100px" >
                 <ItemTemplate> 
                     Name:
                     <asp:Label ID="FirstNameLabel" runat="server" Text='<%# Eval("FirstName") %>' />
