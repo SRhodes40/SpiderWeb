@@ -149,7 +149,8 @@ public partial class Modify : System.Web.UI.Page
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = "UPDATE StudentHasCourse SET InProgress ='" + toProgressTxt.Text + "', Grade ='" + togradeTxt.Text + "'"
                 + " WHERE StudentNumber ='" + stunumbTxt.Text + "' AND CourseNumber ='" + coursenumbTxt.Text +
-                "' AND InProgress ='" + progressTxt.Text + "' AND Grade ='" + gradeTxt.Text + "'";
+                "' AND InProgress ='" + progressTxt.Text + "' AND Grade ='" + gradeTxt.Text + "'" +
+             "UPDATE Student SET GPA = " + toGpaTxt.Text + " WHERE GPA =" + fromGpaTxt.Text;
             //Response.Write(cmd.CommandText);
 
             try
@@ -188,6 +189,12 @@ public partial class Modify : System.Web.UI.Page
         coursenumbTxt.Text = studentgv.SelectedRow.Cells[4].Text;
         progressTxt.Text = studentgv.SelectedRow.Cells[5].Text;
         gradeTxt.Text = studentgv.SelectedRow.Cells[6].Text;
+        fromGpaTxt.Text = studentgv.SelectedRow.Cells[7].Text;
+
+        if (gradeTxt.Text == "&nbsp;")
+        {
+            gradeTxt.Text = "";
+        }
     }
 }
 

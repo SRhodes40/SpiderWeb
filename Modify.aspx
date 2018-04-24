@@ -20,7 +20,7 @@
             <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" />
             <br />
         </div>
-        <asp:GridView ID="studentgv" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataSourceID="Studentddb" OnRowDeleted="studentgv_RowDeleted" OnRowDeleting="studentgv_RowDeleting" OnRowEditing="studentgv_RowEditing" OnRowUpdated="studentgv_RowUpdated" OnSelectedIndexChanged="studentgv_SelectedIndexChanged" Width="1272px">
+        <asp:GridView ID="studentgv" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataSourceID="Studentddb" OnRowDeleted="studentgv_RowDeleted" OnRowDeleting="studentgv_RowDeleting" OnRowEditing="studentgv_RowEditing" OnRowUpdated="studentgv_RowUpdated" OnSelectedIndexChanged="studentgv_SelectedIndexChanged" Width="1275px">
             <Columns>
                 <asp:CommandField ShowSelectButton="True" />
                 <asp:BoundField DataField="FirstName" HeaderText="FirstName" SortExpression="FirstName" />
@@ -29,9 +29,10 @@
                 <asp:BoundField DataField="CourseNumber" HeaderText="CourseNumber" SortExpression="CourseNumber" />
                 <asp:BoundField DataField="InProgress" HeaderText="InProgress" SortExpression="InProgress" />
                 <asp:BoundField DataField="Grade" HeaderText="Grade" SortExpression="Grade" />
+                <asp:BoundField DataField="GPA" HeaderText="GPA" SortExpression="GPA" />
             </Columns>
         </asp:GridView>
-        <asp:SqlDataSource ID="Studentddb" runat="server" ConnectionString="<%$ ConnectionStrings:SpiderWebConnectionString %>" SelectCommand="SELECT Student.FirstName, Student.LastName, StudentHasCourse.StudentNumber, StudentHasCourse.CourseNumber, StudentHasCourse.InProgress, StudentHasCourse.Grade FROM Student INNER JOIN StudentHasCourse ON Student.StudentNumber = StudentHasCourse.StudentNumber ORDER BY StudentHasCourse.StudentNumber, StudentHasCourse.CourseNumber" UpdateCommand="UPDATE StudentHasCourse SET InProgress = InProgress, Grade = Grade" InsertCommand="INSERT INTO StudentHasCourse(InProgress, Grade, CourseNumber, StudentNumber) VALUES (,,,)">
+        <asp:SqlDataSource ID="Studentddb" runat="server" ConnectionString="<%$ ConnectionStrings:SpiderWebConnectionString %>" SelectCommand="SELECT Student.FirstName, Student.LastName, StudentHasCourse.StudentNumber, StudentHasCourse.CourseNumber, StudentHasCourse.InProgress, StudentHasCourse.Grade, Student.GPA FROM Student INNER JOIN StudentHasCourse ON Student.StudentNumber = StudentHasCourse.StudentNumber ORDER BY StudentHasCourse.StudentNumber, StudentHasCourse.CourseNumber" UpdateCommand="UPDATE StudentHasCourse SET InProgress = InProgress, Grade = Grade" InsertCommand="INSERT INTO StudentHasCourse(InProgress, Grade, CourseNumber, StudentNumber) VALUES (,,,)">
         </asp:SqlDataSource>
         <p>
             <asp:Label ID="lblStatus" runat="server" Text=""></asp:Label>
@@ -56,6 +57,11 @@
         &nbsp;<asp:TextBox ID="gradeTxt" runat="server"></asp:TextBox>
         &nbsp;<asp:Label ID="toblbl0" runat="server" Text="to"></asp:Label>
         &nbsp;<asp:TextBox ID="togradeTxt" runat="server"></asp:TextBox>
+        <br />
+        <asp:Label ID="gpaLbl" runat="server" Text="GPA:"></asp:Label>
+        <asp:TextBox ID="fromGpaTxt" runat="server"></asp:TextBox>
+        &nbsp;<asp:Label ID="toblbl1" runat="server" Text="to"></asp:Label>
+        &nbsp;<asp:TextBox ID="toGpaTxt" runat="server"></asp:TextBox>
         <br />
         <asp:Button ID="insertBtn" runat="server" Text="Insert" OnClick="insertBtn_Click" />
         &nbsp;

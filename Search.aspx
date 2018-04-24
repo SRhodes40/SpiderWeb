@@ -41,6 +41,8 @@
         &nbsp<br />
         <br />
         
+        <asp:Label ID="namereturnLbl" runat="server" Text="Searched Student Name: " Visible="False"></asp:Label>
+        
         <asp:Label ID="studentnameLbl" runat="server" Text=""></asp:Label>
     
         
