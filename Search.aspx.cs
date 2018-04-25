@@ -51,7 +51,7 @@ public partial class Search : System.Web.UI.Page
                 "Student.ClassYear, Major.MajorCode, Minor.MinorCode, Course.CourseNumber, Course.NumberOfCredits, StudentHasCourse.Grade, StudentHasCourse.InProgress FROM Student INNER JOIN StudentHasMajor ON " +
                 "Student.StudentNumber = StudentHasMajor.StudentNumber INNER JOIN Major ON StudentHasMajor.MajorCode = Major.MajorCode INNER JOIN StudentHasMinor ON StudentHasMinor.StudentNumber = Student.StudentNumber " +
                 "INNER JOIN Minor ON StudentHasMinor.MinorCode = Minor.MinorCode INNER JOIN StudentHasCourse ON Student.StudentNumber = StudentHasCourse.StudentNumber INNER JOIN Course ON StudentHasCourse.CourseNumber = Course.CourseNumber " +
-                "CROSS JOIN GPAReference WHERE Student.LastName LIKE '" + lastNameSearchField + "%" + "'AND Student.FirstName LIKE '" + firstNameSearchField + "%" + "' ORDER BY StudentNumber, CourseNumber", connectionString);
+                "CROSS JOIN GPAReference WHERE Student.LastName LIKE '" + lastNameSearchField + "'AND Student.FirstName LIKE '" + firstNameSearchField  + "' ORDER BY StudentNumber, CourseNumber", connectionString);
 
             ds = new DataSet();
             da.Fill(ds);
@@ -63,10 +63,10 @@ public partial class Search : System.Web.UI.Page
             coursetakeLbl.Visible = false;
             stunumberLbl.Visible = false;
             numbsearchLbl.Visible = false;
-
+            //majorLbl = ("SELECT DISTINCT Major.MajorCode, Minor.MinorCode FROM Student INNER JOIN StudentHasMajor ON Student.StudentNumber = StudentHasMajor.StudentNumber INNER JOIN StudentHasMinor ON Student.StudentNumber = StudentHasMinor.StudentNumber INNER JOIN Major ON StudentHasMajor.MajorCode = Major.MajorCode INNER JOIN Minor ON StudentHasMinor.MinorCode = Minor.MinorCode WHERE Student.LastName LIKE '" + studentTxt.Text + "%" + "' AND Student.FirstName LIKE '" + firstTxt.Text, connectionString);
             studentnameLbl.Text = firstTxt.Text + " " + studentTxt.Text;
-            // minorLbl.Text = "Minor.MinorCode";
-            // majorLbl.Text = "Major.MajorCode";
+            
+           
             string temp1;
             temp1 = studentTxt.Text + firstTxt.Text;
             namereturnLbl.Visible = true;
