@@ -6,6 +6,7 @@
 <head runat="server">
     <title>Logout</title>
     <link rel="stylesheet" type="text/css" href="Style.css"/>
+    <link rel="shortcut icon" type="image/png" href="Favicon/spider.png"/>
 </head>
 <body>
     <h2>You have been succesfully logged out. To log in, please click below.</h2>
