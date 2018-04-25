@@ -6,6 +6,7 @@
 <head runat="server">
     <title>Project SpiderWeb Change Password</title>
     <link rel="stylesheet" type="text/css" href="Style.css"/>
+    <link rel="shortcut icon" type="image/png" href="Favicon/spider.png"/>
 </head>
 <body>
     <form id="form1" runat="server">

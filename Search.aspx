@@ -6,6 +6,7 @@
 <head runat="server">
     <title>Project SpiderWeb Search</title>
     <link rel="stylesheet" type="text/css" href="Style.css"/>
+    <link rel="shortcut icon" type="image/png" href="Favicon/spider.png"/>
 </head>
 <body>
     <h2 style="background-color: #6699FF; border-style: ridge">Project SpiderWeb Search Page</h2>
