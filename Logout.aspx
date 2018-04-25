@@ -10,7 +10,7 @@
 </head>
 <body>
     <h2>You have been succesfully logged out. To log in, please click below.</h2>
-     <a href="Login.aspx">Login</a>
+     <a href="Default.aspx">Login</a>
     <form id="form1" runat="server">
         <div>
         </div>

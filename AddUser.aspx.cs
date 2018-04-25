@@ -13,7 +13,7 @@ public partial class AddUser : System.Web.UI.Page
         Response.Cache.SetNoStore();
         if (Session["User"] == null)
         {
-            Response.Redirect("Login.aspx");
+            Response.Redirect("Default.aspx");
         }
         if ((String)Session["User"] != "admin")
         {
